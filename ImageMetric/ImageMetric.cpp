@@ -23,3 +23,8 @@ DLLAPI ImageInfo CalculateImageMetric(const WChar* image)
 {
 	return ImageMetricsHelper.DrawMathes(firstImage, secondImage);
 }
+
+DLLAPI ImageInfo ResizeAndCalculateImageMetric(const WChar* image, int width, int heigth)
+{
+	return ImageMetricsHelper.DrawMathes(firstImage, secondImage);
+}
