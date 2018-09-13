@@ -40,39 +40,9 @@ extern "C"
 
 	typedef wchar_t WChar;
 
-	//current step, max step, message
-	typedef void (__stdcall *ReportProgressCallback)(size_t, size_t, const WChar *);
-	typedef void (__stdcall *AddToLogCallback)(const WChar *);
-	typedef bool (__stdcall *CancellationPendingCallback)();
-
-	struct DLLAPI WorkProgressInteropNegotiator 
-	{
-		//current step, max step, message
-		ReportProgressCallback progressCallback;
-		AddToLogCallback addToLogCallback;
-		CancellationPendingCallback cancellationPending;
-		bool cancel;
-	};
-
 	/*------------Functions-------------------------------------------------------*/
 
-	//DLLAPI Result CppLongFunction(const WChar* directoryPath, WorkProgressInteropNegotiator& negotiator);
-	DLLAPI Error ComputeHashes(WorkProgressInteropNegotiator & negotiator);
-	DLLAPI Error CompareHashes(WorkProgressInteropNegotiator & negotiator);
-	DLLAPI Error PostCheckBySURF(WorkProgressInteropNegotiator& negotiator);
-
-	DLLAPI Error OptionsSet(SearchOptions * pOptions);
-	DLLAPI Error Initialize();
-	DLLAPI Error BeforeRelease();
-
-//	DLLAPI DuplPairExport* GetFinalResult(unsigned int * size);
-	DLLAPI unsigned int * GetResultSize();
-	//DLLAPI DuplPairExport* GetResult(unsigned int & index);
-	DLLAPI Error FillResult(DuplPairExport * exportResult, unsigned int index);
-	DLLAPI Error DrawMathes(const WChar * firstImage, const WChar * secondImage);
-	DLLAPI Error ClearHashStrorage(WorkProgressInteropNegotiator& negotiator, bool deleteResized);
-
-	DLLAPI Error ClearSearchPath();
-	DLLAPI Error AddSearchPath(const SearchPathEx* path);
+	DLLAPI ImageInfo CalculateImageMetric(const WChar* image);
+	DLLAPI ImageInfo ResizeAndCalculateImageMetric(const WChar* image, int width, int heigth);
 
 }

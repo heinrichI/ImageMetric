@@ -21,10 +21,14 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 
 DLLAPI ImageInfo CalculateImageMetric(const WChar* image)
 {
-	return ImageMetricsHelper.DrawMathes(firstImage, secondImage);
+	return im::Engine.CalculateImageMetric;
+	if (!im::OpenCVHelper::ReadImage(img, *file, negotiator))
+								return NULL;
+
+	return im::ImageMetricsHelper.(firstImage, secondImage);
 }
 
 DLLAPI ImageInfo ResizeAndCalculateImageMetric(const WChar* image, int width, int heigth)
 {
-	return ImageMetricsHelper.DrawMathes(firstImage, secondImage);
+	return im::ImageMetricsHelper.DrawMathes(firstImage, secondImage);
 }
