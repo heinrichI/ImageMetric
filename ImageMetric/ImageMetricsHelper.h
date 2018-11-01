@@ -7,6 +7,7 @@
 //#include <math.h>
 #include <string>
 #include <vector>
+#include <iostream> //cerr
 
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -87,7 +88,7 @@ namespace im
 					}
 					catch (cv::Exception& e) 
 					{
-						cerr << "Error: " << e.msg << endl;
+						std::cerr << "Error: " << e.msg << endl;
 						// nothing more we can do
 						exit(1);
 					}

@@ -76,10 +76,10 @@ namespace ImageMetricNetAdapter
         [DynamicModuleApi]
         public PostCheckBySURF_fn PostCheckBySURF = null;
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-        public delegate Error OptionsSet_fn([In, Out] DllModel options);
-        [DynamicModuleApi]
-        public OptionsSet_fn OptionsSet = null;
+        //[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        //public delegate Error OptionsSet_fn([In, Out] DllModel options);
+        //[DynamicModuleApi]
+        //public OptionsSet_fn OptionsSet = null;
 
         /*[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
         public delegate IntPtr GetFinalResult_fn([Out]out uint size);
@@ -117,10 +117,10 @@ namespace ImageMetricNetAdapter
         [DynamicModuleApi]
         public ClearSearchPath_fn ClearSearchPath = null;
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-        public delegate Error AddSearchPath_fn([In] SearchPath searchPath);
-        [DynamicModuleApi]
-        public AddSearchPath_fn AddSearchPath = null;
+        //[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        //public delegate Error AddSearchPath_fn([In] SearchPath searchPath);
+        //[DynamicModuleApi]
+        //public AddSearchPath_fn AddSearchPath = null;
 
         #endregion
 

@@ -100,6 +100,7 @@ namespace ImageMetricNetAdapter
             return array.Select(a => new ViewResultOfDupl(a)).ToArray();
         }*/
 
+        /*
         public DuplPairViewModel[] GetResult2()
         {
             List<DuplPairViewModel> result = new List<DuplPairViewModel>();
@@ -176,6 +177,6 @@ namespace ImageMetricNetAdapter
                 _dll.AddSearchPath(item);
             }
             return true;
-        }
+        }*/
     }
 }

@@ -1,4 +1,5 @@
 #pragma once
+
 #include "ImageMetric.h"
 
 
@@ -21,11 +22,11 @@ namespace im
 		Engine(void);
 		~Engine(void);
 
-			Error Initialize(void);
-			Error Release(void);
+		//Error Initialize(void);
+		//Error Release(void);
 
-			ImageInfo CalculateImageMetric(const WChar* image);
-			ImageInfo ResizeAndCalculateImageMetric(const WChar* image, int width, int heigth);
+		static ImageInfo CalculateImageMetric(const WChar* image);
+		static ImageInfo ResizeAndCalculateImageMetric(const WChar* image, int width, int heigth);
 	};
 
 }

@@ -3,7 +3,7 @@
 #include "StringHelper.h"
 #include "PathHelper.h"
 
-using namespace cv;
+//using namespace cv;
 
 namespace im
 {
@@ -11,7 +11,7 @@ namespace im
 	{
 	public:
 
-		static bool ReadImage(Mat & img, const wstring & sourcePath, WorkProgressInteropNegotiator& negotiator)
+		/*static bool ReadImage(Mat & img, const wstring & sourcePath, WorkProgressInteropNegotiator& negotiator)
 		{
 			if (!img.empty())
 				return true;
@@ -78,7 +78,7 @@ namespace im
 			}
 
 			throw std::runtime_error("Cannot read image " + convPath);
-		}
+		}*/
 	};
 }
 
