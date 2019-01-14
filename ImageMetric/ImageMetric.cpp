@@ -31,6 +31,6 @@ DLLAPI ImageInfo CalculateImageMetric(const WChar* image)
 
 DLLAPI ImageInfo ResizeAndCalculateImageMetric(const WChar* image, int width, int heigth)
 {
-	im::Engine::ResizeAndCalculateImageMetric(image, width, heigth);
+	return im::Engine::ResizeAndCalculateImageMetric(image, width, heigth);
 	//return im::ImageMetricsHelper.DrawMathes(firstImage, secondImage);
 }

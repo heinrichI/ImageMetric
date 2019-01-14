@@ -13,5 +13,19 @@ namespace ImageMetricNetAdapterTester
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            Startup += Application_Startup;
+        }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            var viewModel = new MainViewModel();
+
+            var shell = new MainWindow();
+            shell.DataContext = viewModel;
+
+            shell.Show();
+        }
     }
 }

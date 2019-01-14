@@ -24,7 +24,7 @@ namespace ImageMetricNetAdapter
     public class CoreDll : DynamicModule
     {
         public CoreDll()
-            : base(IntPtr.Size == 8 ? "ImageComparer64.dll" : "ImageComparer32.dll")
+            : base(IntPtr.Size == 8 ? "ImageMetric64.dll" : "ImageMetric32.dll")
         {
         }
 

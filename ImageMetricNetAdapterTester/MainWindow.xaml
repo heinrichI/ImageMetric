@@ -5,8 +5,8 @@
     <Grid>
         <StackPanel>
             <Label>Path</Label>
-            <TextBox></TextBox>
-            <Button>Go</Button>
+            <TextBox Text="{Binding Path, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Button Command="{Binding GoCommand}">Go</Button>
         </StackPanel>
     </Grid>
 </Window>
