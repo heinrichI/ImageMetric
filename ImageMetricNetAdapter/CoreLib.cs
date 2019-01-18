@@ -24,7 +24,7 @@ namespace ImageMetricNetAdapter
             {
                 throw new Exception("Can't load core library! " + Environment.NewLine + ex.Message);
             }
-            _dll.Initialize();
+            //_dll.Initialize();
             //_handle = _dll.adCreate();
 
             /*if (Version.Compatible(GetVersion(CoreDll.VersionType.AntiDupl)))
@@ -45,7 +45,7 @@ namespace ImageMetricNetAdapter
             //Release();
             if (_dll != null)
             {
-                _dll.BeforeRelease();
+                //_dll.BeforeRelease();
                 _dll.Dispose();
                 _dll = null;
             }
@@ -67,19 +67,24 @@ namespace ImageMetricNetAdapter
         }
 
 
-        public CoreDll.Error ComputeHashes(CoreDll.WorkProgressInteropNegotiator negotiator)
-        {
-            return _dll.ComputeHashes(negotiator);
-        }
+        //public CoreDll.Error ComputeHashes(CoreDll.WorkProgressInteropNegotiator negotiator)
+        //{
+        //    return _dll.ComputeHashes(negotiator);
+        //}
 
-        public CoreDll.Error CompareHashes(CoreDll.WorkProgressInteropNegotiator negotiator)
-        {
-            return _dll.CompareHashes(negotiator);
-        }
+        //public CoreDll.Error CompareHashes(CoreDll.WorkProgressInteropNegotiator negotiator)
+        //{
+        //    return _dll.CompareHashes(negotiator);
+        //}
 
-        public CoreDll.Error PostCheckBySURF(CoreDll.WorkProgressInteropNegotiator negotiator)
+        //public CoreDll.Error PostCheckBySURF(CoreDll.WorkProgressInteropNegotiator negotiator)
+        //{
+        //    return _dll.PostCheckBySURF(negotiator);
+        //}
+
+        public CoreDll.Error CalculateImageMetric(string path)
         {
-            return _dll.PostCheckBySURF(negotiator);
+            return _dll.CalculateImageMetric(path, null);
         }
 
 
@@ -178,5 +183,7 @@ namespace ImageMetricNetAdapter
             }
             return true;
         }*/
+
+
     }
 }

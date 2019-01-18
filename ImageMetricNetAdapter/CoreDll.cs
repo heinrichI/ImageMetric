@@ -51,7 +51,7 @@ namespace ImageMetricNetAdapter
 
         #region API functions
 
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+       /* [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
         public delegate Error Initializes_fn();
         [DynamicModuleApi]
         public Initializes_fn Initialize = null;
@@ -81,20 +81,20 @@ namespace ImageMetricNetAdapter
         //[DynamicModuleApi]
         //public OptionsSet_fn OptionsSet = null;
 
-        /*[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
         public delegate IntPtr GetFinalResult_fn([Out]out uint size);
         [DynamicModuleApi]
-        public GetFinalResult_fn GetFinalResult = null;*/
+        public GetFinalResult_fn GetFinalResult = null;
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
         public delegate uint GetResultSize_fn();
         [DynamicModuleApi]
         public GetResultSize_fn GetResultSize = null;
 
-        /*[UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
         public delegate IntPtr GetResult_fn(uint index);
         [DynamicModuleApi]
-        public GetResult_fn GetResult = null;*/
+        public GetResult_fn GetResult = null;
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
         public delegate Error FillResult_fn(IntPtr exportResult, uint index);
@@ -121,6 +121,12 @@ namespace ImageMetricNetAdapter
         //public delegate Error AddSearchPath_fn([In] SearchPath searchPath);
         //[DynamicModuleApi]
         //public AddSearchPath_fn AddSearchPath = null;
+        */
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public delegate Error CalculateImageMetric_fn(string imagePath, [In, Out] WorkProgressInteropNegotiator negotiator);
+        [DynamicModuleApi]
+        public CalculateImageMetric_fn CalculateImageMetric = null;
 
         #endregion
 
