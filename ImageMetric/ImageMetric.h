@@ -40,9 +40,23 @@ extern "C"
 
 	typedef wchar_t WChar;
 
+	//current step, max step, message
+	typedef void (__stdcall *ReportProgressCallback)(size_t, size_t, const WChar *);
+	typedef void (__stdcall *AddToLogCallback)(const WChar *);
+	typedef bool (__stdcall *CancellationPendingCallback)();
+
+	struct DLLAPI WorkProgressInteropNegotiator 
+	{
+		//current step, max step, message
+		ReportProgressCallback progressCallback;
+		AddToLogCallback addToLogCallback;
+		CancellationPendingCallback cancellationPending;
+		bool cancel;
+	};
+
 	/*------------Functions-------------------------------------------------------*/
 
-	DLLAPI ImageInfo CalculateImageMetric(const WChar* image);
+	DLLAPI Error CalculateImageMetric(const WChar* imagePath, WorkProgressInteropNegotiator& negotiator);
 	DLLAPI ImageInfo ResizeAndCalculateImageMetric(const WChar* image, int width, int heigth);
 
 }

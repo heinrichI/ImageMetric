@@ -61,5 +61,13 @@ namespace im
 			return result;
 		}
 
+		static wstring ToWstring(const wchar_t * inputChar)
+		{
+			//const size_t size = std::wcslen(inputChar);
+			std::wstring result(inputChar);
+
+			return result;
+		}
+
 	};
 }

@@ -3,7 +3,27 @@
 #include "StringHelper.h"
 #include "PathHelper.h"
 
-//using namespace cv;
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+#ifdef _DEBUG
+#pragma comment (lib, "opencv_core2413d.lib")
+#pragma comment (lib, "opencv_highgui2413d.lib")
+#pragma comment (lib, "libtiffd.lib")
+#pragma comment (lib, "libjpegd.lib")
+#pragma comment (lib, "libpngd.lib")
+#pragma comment (lib, "libjasperd.lib")
+#pragma comment (lib, "IlmImfd.lib")
+#pragma comment (lib, "zlibd.lib")
+#pragma comment (lib, "opencv_imgproc2413d.lib")
+#else
+#pragma comment (lib, "opencv_core2413.lib")
+#pragma comment (lib, "opencv_highgui2413.lib")
+#endif
+
+
+using namespace cv;
 
 namespace im
 {
@@ -11,7 +31,7 @@ namespace im
 	{
 	public:
 
-		/*static bool ReadImage(Mat & img, const wstring & sourcePath, WorkProgressInteropNegotiator& negotiator)
+		static bool ReadImage(Mat & img, const wstring & sourcePath, WorkProgressInteropNegotiator& negotiator)
 		{
 			if (!img.empty())
 				return true;
@@ -33,52 +53,8 @@ namespace im
 			return true;
 		}
 
-		static double GetArea(const vector<Point2f> & obj, const vector<Point2f> & scene, const SurfInfo & objInfo)
-		{
-			if (obj.size()>3)
-			{
-				Mat H = findHomography( obj, scene, CV_RANSAC );
 
-				//-- Get the corners from the image_1 ( the object to be "detected" )
-				std::vector<Point2f> obj_corners(4);
-				obj_corners[0] = Point(0,0); 
-				obj_corners[1] = Point( objInfo.width, 0 );
-				obj_corners[2] = Point( objInfo.width, objInfo.heigth ); 
-				obj_corners[3] = Point( 0, objInfo.heigth );
-				std::vector<Point2f> scene_corners(4);
-
-				perspectiveTransform( obj_corners, scene_corners, H);
-
-				return contourArea(scene_corners);
-			}
-
-			return 0.0;
-		}
-
-		static SurfInfo GetSurfInfo(const wstring & path)
-		{
-			const int minHessian = 400;
-			string convPath = StringHelper::ToString(path);
-			Mat img = imread(convPath, CV_LOAD_IMAGE_GRAYSCALE);
-			if(!img.empty())
-			{
-				SurfInfo si;
-				si.width = img.cols;
-				si.heigth = img.rows;
-				// detecting keypoints
-				SurfFeatureDetector detector(minHessian);
-				//vector<KeyPoint> keypoints;
-				detector.detect(img, si.keypoints);
-
-				// computing descriptors
-				SurfDescriptorExtractor extractor;
-				//Mat descriptors;
-				extractor.compute( img, si.keypoints, si.descriptors );
-				return si;
-			}
-
-			throw std::runtime_error("Cannot read image " + convPath);
-		}*/
+		
 	};
 }
 

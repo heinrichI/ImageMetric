@@ -12,7 +12,7 @@ namespace ImageMetricNetAdapterTester
     {
         public MainViewModel()
         {
-            Path = @"d:\Борисов\SoftMy\ImageComparer1.png";
+            Path = @"d:\Борисов\jpeg degradation Double JPEG Compression\Image-Forgery-Detection\images\7845245_371158164.jpg";
         }
 
         private string _path;
@@ -34,6 +34,7 @@ namespace ImageMetricNetAdapterTester
                 return _goCommand ?? (_goCommand = new RelayCommand(arg =>
                 {
                     var core = new CoreLib();
+                    var metric = core.CalculateImageMetric(Path);
                 }, arg => !String.IsNullOrEmpty(Path)));
             }
         }
