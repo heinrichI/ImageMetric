@@ -12,7 +12,7 @@ namespace ImageMetricNetAdapterTester
     {
         public MainViewModel()
         {
-            Path = @"d:\jpeg degradation Double JPEG Compression\Image-Forgery-Detection\images\7845245_371158164.jpg";
+            Path = @"d:\Борисов\jpeg degradation Double JPEG Compression\Image-Forgery-Detection\images\7845245_371158164.jpg";
         }
 
         private string _path;

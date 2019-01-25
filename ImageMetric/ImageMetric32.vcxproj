@@ -68,6 +68,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="Histogram.h" />
     <ClInclude Include="ImageMetric.h" />
     <ClInclude Include="ImageMetricsHelper.h" />
     <ClInclude Include="OpenCVHelper.h" />
@@ -76,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Histogram.cpp" />
     <ClCompile Include="ImageMetric.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

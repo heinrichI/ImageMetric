@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "OpenCVHelper.h"
+#include "Histogram.h"
 
 #include <iostream>
 #include <iomanip>
@@ -15,6 +16,21 @@ namespace im
 
 	Engine::~Engine(void)
 	{
+	}
+
+	template<class ForwardIt> ForwardIt max_element(ForwardIt first, ForwardIt last)
+	{
+		if (first == last) {
+			return last;
+		}
+		ForwardIt largest = first;
+		++first;
+		for (; first != last; ++first) {
+			if (*largest < *first) {
+				largest = first;
+			}
+		}
+		return largest;
 	}
 
 	ImageInfo Engine::CalculateImageMetric(const WChar* image, WorkProgressInteropNegotiator& negotiator)
@@ -208,7 +224,7 @@ namespace im
 			//	cout << endl;
 			//}
 
-			vector<double> qDCT;
+			vector<Mat> qDCT;
 
 			for (int i = 0; i < blocks.size(); i++)
 			{
@@ -273,19 +289,20 @@ namespace im
 //img2.convertTo(img3, CV_64F);
 
 				dct(img3, dct_result);
-				cout << dct_result.type() << endl;
+				//cout << dct_result.type() << endl;
+				qDCT.push_back(dct_result.clone());
 
-				cout <<  "dct" << endl;
-				for(int y = 0; y < dct_result.rows; y += 1)
-				{
-					for (int x = 0; x < dct_result.cols; x += 1)
-					{
-						//uchar u = dct_result.at<cv::Vec3b>(y,x)[0];
-						//cout <<  (float)dct_result.at<uchar>(y,x) << ",";
-						cout <<  dct_result.at<float>(y,x) << ", ";
-					}
-					cout << endl;
-				}
+				//cout <<  "dct" << endl;
+				//for(int y = 0; y < dct_result.rows; y += 1)
+				//{
+				//	for (int x = 0; x < dct_result.cols; x += 1)
+				//	{
+				//		//uchar u = dct_result.at<cv::Vec3b>(y,x)[0];
+				//		//cout <<  (float)dct_result.at<uchar>(y,x) << ",";
+				//		cout <<  dct_result.at<float>(y,x) << ", ";
+				//	}
+				//	cout << endl;
+				//}
 
 				//dct(blocks[i], dct_result);
 				//qDCT.push_back(dct(blocks));
@@ -303,9 +320,146 @@ namespace im
 //    flat.insert(flat.end(), plane_i_ptr, plane_i_ptr+plane_i.total());
 //}
 
-		 for (int i = 0; i < h; i++)
-		 {
-		 }
+		Mat row0;
+		Mat row1;
+		Mat row2;
+		Mat row3;
+		Mat row4;
+		Mat row5;
+		Mat row6;
+		Mat row7;
+		for each (Mat dct in qDCT)
+		{
+			//a(Range(0, a.rows), Range(a.cols - 2, a.cols)).copyTo(e);
+			row0.push_back(dct.row(0));
+			row1.push_back(dct.row(1));
+			row2.push_back(dct.row(2));
+			row3.push_back(dct.row(3));
+			row4.push_back(dct.row(4));
+			row5.push_back(dct.row(5));
+			row6.push_back(dct.row(6));
+			row7.push_back(dct.row(7));
+		}
+
+
+		//	Mat meanArray;
+		//Scalar outMean = mean(qDCT[0]);
+		Mat row_mean;
+		//reduce(qDCT[0], row_mean, 0, CV_REDUCE_AVG);
+		//reduce(row1, row_mean, 0, CV_REDUCE_AVG);
+		//reduce(qDCT[0], col_mean, 1, CV_REDUCE_AVG);
+
+		cv::Mat meanMat;
+
+		reduce(row0, row_mean, 0, CV_REDUCE_AVG);
+		meanMat.push_back(row_mean.clone());
+		reduce(row1, row_mean, 0, CV_REDUCE_AVG);
+		meanMat.push_back(row_mean.clone());
+		reduce(row2, row_mean, 0, CV_REDUCE_AVG);
+		meanMat.push_back(row_mean.clone());
+		reduce(row3, row_mean, 0, CV_REDUCE_AVG);
+		meanMat.push_back(row_mean.clone());
+		reduce(row4, row_mean, 0, CV_REDUCE_AVG);
+		meanMat.push_back(row_mean.clone());
+		reduce(row5, row_mean, 0, CV_REDUCE_AVG);
+		meanMat.push_back(row_mean.clone());
+		reduce(row6, row_mean, 0, CV_REDUCE_AVG);
+		meanMat.push_back(row_mean.clone());
+		reduce(row7, row_mean, 0, CV_REDUCE_AVG);
+		meanMat.push_back(row_mean.clone());
+
+
+		//cout << meanMat << endl;
+
+		//cv::Mat meanMat = cv::repeat(row_mean, qDCT[0].rows, 1);
+
+		/*for(int y = 0; y < meanMat.rows; y += 1)
+		{
+			for (int x = 0; x < meanMat.cols; x += 1)
+			{
+				cout <<  meanMat.at<float>(y,x) << ", ";
+			}
+			cout << endl;
+		}*/
+
+		vector<Mat> subAll;
+		Mat sub;
+		//subtract(qDCT[0].row(0), row_mean, sub);
+		//subtract(qDCT[0], meanMat, sub);
+		for each (Mat dct in qDCT)
+		{
+			subtract(dct, meanMat, sub);
+			Mat conv;
+			sub.convertTo(conv, CV_32S);
+			subAll.push_back(conv);
+		}
+
+		//cout << subAll[0] << endl;
+
+		vector<int> data;
+		for each (Mat sub in subAll)
+		{
+			data.push_back(sub.at<int>(0,0));
+		}
+
+	/*	int max = *std::max_element(data.begin(), data.end());
+		int min = *std::min_element(data.begin(), data.end());
+
+		vector<int> minMaxArray;
+		for (int i = min; i <= max; i++)
+		{
+			minMaxArray.push_back(i);
+		}*/
+		
+		Histogram histogram(data);
+		//Histogram histogram(minMaxArray.size(), min, max, 0);
+
+		//dft(complexImg, complexImg);
+
+		///// Establish the number of bins
+		//int histSize = 256;
+		///// Set the ranges ( for B,G,R) )
+		//float range[] = { 0, 256 } ;
+		//const float* histRange = { range };
+		//bool uniform = true; bool accumulate = false;
+		//Mat b_hist, g_hist, r_hist;
+
+//&bgr_planes[0]: The source array(s)
+//1: The number of source arrays (in this case we are using 1. We can enter here also a list of arrays )
+//0: The channel (dim) to be measured. In this case it is just the intensity (each array is single-channel) so we just write 0.
+//Mat(): A mask to be used on the source array ( zeros indicating pixels to be ignored ). If not defined it is not used
+//b_hist: The Mat object where the histogram will be stored
+//1: The histogram dimensionality.
+//histSize: The number of bins per each used dimension
+//histRange: The range of values to be measured per each dimension
+//uniform and accumulate: The bin sizes are the same and the histogram is cleared at the beginning.
+		//calcHist( &data, 1, 0, Mat(), b_hist, 1, &histSize, &histRange, uniform, accumulate );
+
+		/// Normalize the result to [ 0, histImage.rows ]
+		//normalize(b_hist, b_hist, 0, histImage.rows, NORM_MINMAX, -1, Mat() );
+
+		//for(int y = 0; y < sub.rows; y += 1)
+		//{
+		//	for (int x = 0; x < sub.cols; x += 1)
+		//	{
+		//		cout <<  sub.at<float>(y,x) << ", ";
+		//	}
+		//	cout << endl;
+		//}
+
+		//Mat qDCTConv;
+		//qDCTConv.create(sub.rows, sub.cols, CV_32S);
+		//sub.convertTo(qDCTConv, CV_32S);
+
+		//for(int y = 0; y < qDCTConv.rows; y += 1)
+		//{
+		//	for (int x = 0; x < qDCTConv.cols; x += 1)
+		//	{
+		//		cout <<  qDCTConv.at<int>(y,x) << ", ";
+		//	}
+		//	cout << endl;
+		//}
+
 
 		//return Error::OK;
 		return ImageInfo();
