@@ -39,6 +39,34 @@ class Histogram
 		//double getMin()const{return min;}
 		//int getNumberOfBins()const{return numberOfBins;}
 
+		template<typename Iter, typename T>
+		Iter my_find(Iter begin, Iter end, T value)
+		{
+			Iter i = std::lower_bound(begin, end, value);
+
+			if (i != end && *i == value)
+				return i; // found in container
+			else
+				return end; // not found
+		}
+
+		template <class ForwardIterator, class T>
+		ForwardIterator largest_less_than_or_equal_to ( ForwardIterator first, ForwardIterator last,
+		const T& value)
+		{
+			ForwardIterator upperb = upper_bound(first, last, value);
+    
+			// First element is >, so none are <=
+			if(upperb == first)
+			  return last;
+    
+			// All elements are <=, so return the smallest.
+			if(upperb == last)
+			  return --upperb;
+    
+			return upperb - 1;
+		}
+
 
 	protected:
 		//double *pHistogramArray;		

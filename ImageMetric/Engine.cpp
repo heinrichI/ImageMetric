@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "OpenCVHelper.h"
 #include "Histogram.h"
+#include "BHistogram.h"
 
 #include <iostream>
 #include <iomanip>
@@ -320,6 +321,7 @@ namespace im
 //    flat.insert(flat.end(), plane_i_ptr, plane_i_ptr+plane_i.total());
 //}
 
+
 		Mat row0;
 		Mat row1;
 		Mat row2;
@@ -396,33 +398,42 @@ namespace im
 
 		//cout << subAll[0] << endl;
 
+		
+		//цикл по первым трем числам блоков
+
 		vector<int> data;
 		for each (Mat sub in subAll)
 		{
 			data.push_back(sub.at<int>(0,0));
 		}
 
-	/*	int max = *std::max_element(data.begin(), data.end());
+		int max = *std::max_element(data.begin(), data.end());
 		int min = *std::min_element(data.begin(), data.end());
 
-		vector<int> minMaxArray;
+		/*vector<int> minMaxArray;
 		for (int i = min; i <= max; i++)
 		{
 			minMaxArray.push_back(i);
 		}*/
 		
-		Histogram histogram(data);
+		//Histogram histogram(data);
 		//Histogram histogram(minMaxArray.size(), min, max, 0);
+		
+		//BHistogram histogram(data);
 
-		//dft(complexImg, complexImg);
+		/// Establish the number of bins
+		int histSize = max - min;
+		/// Set the ranges ( for B,G,R) )
+		float range[] = { min, max } ;
+		const float* histRange = { range };
+		bool uniform = true; 
+		bool accumulate = false;
+		Mat b_hist;
 
-		///// Establish the number of bins
-		//int histSize = 256;
-		///// Set the ranges ( for B,G,R) )
-		//float range[] = { 0, 256 } ;
-		//const float* histRange = { range };
-		//bool uniform = true; bool accumulate = false;
-		//Mat b_hist, g_hist, r_hist;
+//cv::Mat converted(1, data.size(), CV_32S, data);
+		Mat converted(data);
+		converted.convertTo(converted, CV_32F);
+		//cout << converted << endl;
 
 //&bgr_planes[0]: The source array(s)
 //1: The number of source arrays (in this case we are using 1. We can enter here also a list of arrays )
@@ -433,10 +444,72 @@ namespace im
 //histSize: The number of bins per each used dimension
 //histRange: The range of values to be measured per each dimension
 //uniform and accumulate: The bin sizes are the same and the histogram is cleared at the beginning.
-		//calcHist( &data, 1, 0, Mat(), b_hist, 1, &histSize, &histRange, uniform, accumulate );
+		calcHist( &converted, 1, 0, Mat(), b_hist, 1, &histSize, &histRange, uniform, accumulate );
 
+		double minHist, maxHist;
+		cv::minMaxLoc(b_hist, &minHist, &maxHist);
+		double s = cv::sum( b_hist )[0];
+		//cout << b_hist << endl;
+
+		//Mat histImage( hist_h, hist_w, CV_8UC3, Scalar( 0,0,0) );
 		/// Normalize the result to [ 0, histImage.rows ]
-		//normalize(b_hist, b_hist, 0, histImage.rows, NORM_MINMAX, -1, Mat() );
+		normalize(b_hist, b_hist, 0, 1, NORM_MINMAX, -1, Mat() );
+		//cout << b_hist << endl;
+
+		
+		dft(b_hist, b_hist);
+		//cout << "dft" << endl;
+		//cout << b_hist << endl;
+		
+		try
+		{
+		//Mat rotated(b_hist.size(), b_hist.type());
+		//Mat rotated(b_hist);
+		cv::Mat rotated = cv::Mat::zeros(b_hist.size(), b_hist.type());
+		//int halfWidth = b_hist.rows / 2;
+		b_hist(cv::Rect(0, 0, b_hist.cols, b_hist.rows / 2)).copyTo(rotated(cv::Rect(0, b_hist.rows / 2, b_hist.cols, b_hist.rows / 2)));
+		b_hist(cv::Rect(0,  b_hist.rows / 2, b_hist.cols, b_hist.rows / 2)).copyTo(rotated(cv::Rect(0, 0, b_hist.cols, b_hist.rows / 2)));
+		//cout << rotated << endl;
+		//b_hist(cv::Rect(b_hist.cols / 2, 0, b_hist.cols / 2, b_hist.rows)).copyTo(rotated(cv::Rect(0, 0, b_hist.cols / 2, b_hist.rows)));
+		//Mat rotated(Range(rowRange), Range(colRange))
+		//cv::Mat out = cv::Mat::zeros(b_hist.size(), b_hist.type());
+		//b_hist(cv::Rect(0,10, b_hist.cols, b_hist.rows-10)).copyTo(out(cv::Rect(0,0,b_hist.cols,b_hist.rows-10)));
+		cv::Mat shifted = cv::Mat::zeros(rotated.size(), rotated.type());
+		rotated(cv::Rect(0, 1, b_hist.cols, b_hist.rows - 1)).copyTo(shifted(cv::Rect(0, 0, b_hist.cols, b_hist.rows - 1)));
+		rotated(cv::Rect(0, b_hist.rows - 1, b_hist.cols, 1)).copyTo(shifted(cv::Rect(0, b_hist.rows - 1, b_hist.cols, 1)));
+
+		Mat subtracted;
+		subtract(shifted, rotated, subtracted);
+		//cout << subtracted << endl;
+
+		
+		vector<int> indices;
+		for (int y = 0; y < subtracted.rows - 1; y += 1)
+        {
+			//cout <<  (float)subtracted.at<float>(y,0) << ",";
+			if (subtracted.at<float>(y,0) > 0 && subtracted.at<float>(y+1,0) < 0)
+			{
+				cout <<  (float)subtracted.at<float>(y,0) << ">" << (float)subtracted.at<float>(y+1,0) << "(" << y << "), ";
+				indices.push_back(y + 1);
+			}
+		}
+
+		int peakCount = 0;
+		for (int i = 0; i < indices.size(); i++)
+        {
+			if ((float)rotated.at<float>(indices[i],0) > 0.5)
+				peakCount++;
+		}
+
+		}
+		catch (cv::Exception& e) 
+		{
+			cerr << "Error Reason: " << e.msg << endl;
+			// nothing more we can do
+			exit(1);
+		}
+
+
 
 		//for(int y = 0; y < sub.rows; y += 1)
 		//{

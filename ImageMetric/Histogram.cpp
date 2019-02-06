@@ -44,17 +44,45 @@ Histogram::Histogram(std::vector<int> & data)
 	//numberOfBins = ceil(rangeSize/binSize);
     //binNumbers.resize(numberOfBins);
 
-    for(int i = 0; i<numberOfSamples; i++){
-        tempData = data[i] - min;
-        index = (int)floor(tempData/binWidth);
-        //binNumbers[bin]++;
-		//int index  = (int)((value - min)/binWidth);
-		//pHistogramArray[index] += 1; 
-		//if (index > HistogramVector.size())
-		//	cerr << "index > _histogramArray" <<endl;
-		//else
-		HistogramVector[index] += 1; 
-    }
+	// initialize original index locations
+  //vector<size_t> idx(data.size());
+  //iota(idx.begin(), idx.end(), 0);
+
+  // sort indexes based on comparing values in v
+  //sort(idx.begin(), idx.end(),
+  //     [&data](size_t i1, size_t i2) {return data[i1] < data[i2];});
+
+
+	vector<int> sorted(data);
+	std::sort(sorted.begin(), sorted.end());
+
+	//vector<int> searchSorted;
+
+	//vector<int> idx(rangeSize);
+	//iota(idx.begin(), idx.end(), min);
+
+	//for(int i = 0; i < sorted.size(); i++)
+	//{
+	//	auto iter = lower_bound( idx.begin(), idx.end(), sorted[i] );
+	//	searchSorted.push_back(iter - idx.begin());
+	//}
+
+	vector<int> searchSorted2;
+	for(int search_value = min; search_value < max; search_value++)
+	{
+		//auto it = my_find(cloned.begin(), cloned.end(), i); //it is your iterator
+		//auto it = largest_less_than_or_equal_to(cloned.begin(), cloned.end(), i);
+
+		auto iter = lower_bound( sorted.begin(), sorted.end(), search_value );
+		searchSorted2.push_back(iter - sorted.begin());
+	}
+
+
+  //  for(int i = 0; i<numberOfSamples; i++){
+  //      tempData = data[i] - min;
+  //      index = (int)floor(tempData/binWidth);
+		//HistogramVector[index] += 1; 
+  //  }
 
 	//double maxH = *std::max_element(HistogramVector.begin(), HistogramVector.end());
 	//double minH = *std::min_element(HistogramVector.begin(), HistogramVector.end());
@@ -62,7 +90,8 @@ Histogram::Histogram(std::vector<int> & data)
 	//{
 	//	item = (item - minH) / (maxH - minH);
 	//}
-	normalize(HistogramVector);
+
+	//normalize(HistogramVector);
 	//normalized = (x-min(x))/(max(x)-min(x))
 }
 
