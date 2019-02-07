@@ -456,8 +456,68 @@ namespace im
 		normalize(b_hist, b_hist, 0, 1, NORM_MINMAX, -1, Mat() );
 		//cout << b_hist << endl;
 
-		
-		dft(b_hist, b_hist);
+		Mat C = (Mat_<float>(1,11) << 0.00010416666666666667, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00010416666666666667, 0.0007291666666666667, 0.0, 0.00010416666666666667);
+		//cout << C << endl;
+		 
+		//dft(C, C, DFT_COMPLEX_OUTPUT);
+		//cout << C << endl;
+
+		//Mat padded;                            //expand input image to optimal size
+		//int m = getOptimalDFTSize( C.rows );
+		//int n2 = getOptimalDFTSize( C.cols ); // on the border add zero values
+		//copyMakeBorder(C, padded, 0, m - C.rows, 0, n2 - C.cols, BORDER_CONSTANT, Scalar::all(0));
+		//Mat planes[] = {Mat_<float>(padded), Mat::zeros(padded.size(), CV_32F)};
+		Mat planes[] = {Mat_<float>(C), Mat::zeros(C.size(), CV_32F)};
+
+		Mat complexI;
+		merge(planes, 2, complexI);         // Add to the expanded another plane with zeros
+		dft(complexI, complexI, DFT_COMPLEX_OUTPUT);            // this way the result may fit in the source matrix
+		//cout << complexI << endl;
+		// compute the magnitude and switch to logarithmic scale
+		// => log(1 + sqrt(Re(DFT(I))^2 + Im(DFT(I))^2))
+		split(complexI, planes);                   // planes[0] = Re(DFT(I), planes[1] = Im(DFT(I))
+		//cout << planes[0] << endl;
+		//cout << planes[1] << endl;
+
+		// create a new matrix for storage
+		//cv::Mat absol = cv::Mat::zeros(complexI.size(), complexI.type());
+		//for(int i=0;i<absol.rows;i++){
+		//  // pointer to row(i) values
+		//  const float* rowi_x = planes[0].ptr<float>(i);
+		//  const float* rowi_y = planes[1].ptr<float>(i); 
+		//  float* rowi_a = absol.ptr<float>(i); 
+		//  for(int j=0;j<=absol.cols;j++){ 
+		//	 rowi_a[j] = sqrt(rowi_x[j]*rowi_x[j]+rowi_y[j]*rowi_y[j]);
+		//  }
+		//}
+		//cout << absol << endl;
+
+		//Mat mul;
+		//mulSpectrums(complexI, complexI, mul, 0, false);
+		//mulSpectrums(complexI, complexI, mul, 0, true);
+		//cout << mul << endl;
+		//mulSpectrums(planes[0], planes[1], mul, 0, true);
+		//mulSpectrums(planes[0], planes[1], mul, 0, false);
+		//cout << mul << endl;
+
+		magnitude(planes[0], planes[1], planes[0]);// planes[0] = magnitude
+		Mat magI = planes[0];
+		//cout << magI << endl; //absolute value
+		//cout << planes[1] << endl;
+
+		//magI += Scalar::all(1);                    // switch to logarithmic scale
+		//log(magI, magI);
+		//cout << magI << endl;
+
+		Mat planes2[] = {Mat_<float>(b_hist), Mat::zeros(b_hist.size(), CV_32F)};
+		Mat complexI2;
+		merge(planes2, 2, complexI2);         // Add to the expanded another plane with zeros
+		dft(complexI2, complexI2, DFT_COMPLEX_OUTPUT);   
+		split(complexI2, planes2);                   // planes[0] = Re(DFT(I), planes[1] = Im(DFT(I))
+		magnitude(planes2[0], planes2[1], planes2[0]);// planes[0] = magnitude
+		Mat magI2 = planes2[0];
+
+		//dft(b_hist, b_hist );
 		//cout << "dft" << endl;
 		//cout << b_hist << endl;
 		
@@ -465,18 +525,18 @@ namespace im
 		{
 		//Mat rotated(b_hist.size(), b_hist.type());
 		//Mat rotated(b_hist);
-		cv::Mat rotated = cv::Mat::zeros(b_hist.size(), b_hist.type());
+		cv::Mat rotated = cv::Mat::zeros(magI2.size(), magI2.type());
 		//int halfWidth = b_hist.rows / 2;
-		b_hist(cv::Rect(0, 0, b_hist.cols, b_hist.rows / 2)).copyTo(rotated(cv::Rect(0, b_hist.rows / 2, b_hist.cols, b_hist.rows / 2)));
-		b_hist(cv::Rect(0,  b_hist.rows / 2, b_hist.cols, b_hist.rows / 2)).copyTo(rotated(cv::Rect(0, 0, b_hist.cols, b_hist.rows / 2)));
+		magI2(cv::Rect(0, 0, magI2.cols, magI2.rows / 2)).copyTo(rotated(cv::Rect(0, magI2.rows / 2, magI2.cols, magI2.rows / 2)));
+		magI2(cv::Rect(0,  magI2.rows / 2, magI2.cols, magI2.rows / 2)).copyTo(rotated(cv::Rect(0, 0, magI2.cols, magI2.rows / 2)));
 		//cout << rotated << endl;
 		//b_hist(cv::Rect(b_hist.cols / 2, 0, b_hist.cols / 2, b_hist.rows)).copyTo(rotated(cv::Rect(0, 0, b_hist.cols / 2, b_hist.rows)));
 		//Mat rotated(Range(rowRange), Range(colRange))
 		//cv::Mat out = cv::Mat::zeros(b_hist.size(), b_hist.type());
 		//b_hist(cv::Rect(0,10, b_hist.cols, b_hist.rows-10)).copyTo(out(cv::Rect(0,0,b_hist.cols,b_hist.rows-10)));
 		cv::Mat shifted = cv::Mat::zeros(rotated.size(), rotated.type());
-		rotated(cv::Rect(0, 1, b_hist.cols, b_hist.rows - 1)).copyTo(shifted(cv::Rect(0, 0, b_hist.cols, b_hist.rows - 1)));
-		rotated(cv::Rect(0, b_hist.rows - 1, b_hist.cols, 1)).copyTo(shifted(cv::Rect(0, b_hist.rows - 1, b_hist.cols, 1)));
+		rotated(cv::Rect(0, 1, magI2.cols, magI2.rows - 1)).copyTo(shifted(cv::Rect(0, 0, magI2.cols, magI2.rows - 1)));
+		rotated(cv::Rect(0, magI2.rows - 1, magI2.cols, 1)).copyTo(shifted(cv::Rect(0, magI2.rows - 1, magI2.cols, 1)));
 
 		Mat subtracted;
 		subtract(shifted, rotated, subtracted);
