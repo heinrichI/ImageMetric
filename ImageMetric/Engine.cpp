@@ -6,6 +6,12 @@
 #include <iostream>
 #include <iomanip>
 
+#include <iostream>
+#include <iterator>
+#include <fstream>
+#include <vector>
+#include <algorithm> // for std::copy
+
 using namespace cv;
 
 namespace im
@@ -111,9 +117,9 @@ namespace im
             //if(!maskImg.data || maskImg.empty())
              //   std::cerr << "Problem Loading Image" << std::endl;
 
-			std::vector<cv::Mat> blocks;
-			int colDivisor = w / 8;
-			int rowDivisor = h / 8;
+		std::vector<cv::Mat> blocks;
+		int colDivisor = w / 8;
+		int rowDivisor = h / 8;
 
 			
 			//int dims[] = {colDivisor,rowDivisor,8,8};
@@ -165,30 +171,86 @@ namespace im
 		//cout << endl;
 
 
-            // check if divisors fit to image dimensions
-            if (y_.cols % colDivisor == 0 && y_.rows % rowDivisor == 0)
+        // check if divisors fit to image dimensions
+        if (y_.cols % colDivisor == 0 && y_.rows % rowDivisor == 0)
+        {
+			for(int x = 0; x < y_.rows; x += y_.rows / rowDivisor)
+            
             {
                 for (int y = 0; y < y_.cols; y += y_.cols / colDivisor)
                 {
-                    for(int x = 0; x < y_.rows; x += y_.rows / rowDivisor)
-                    {
-						if (y == 0 && x == 0)
-						{
-							cout <<  "x=" << x << ", y=" << y << endl;
-							Mat bl = y_(cv::Rect(y, x, (y_.cols / colDivisor), (y_.rows / rowDivisor)));
-							for(int y = 0; y < bl.rows; y += 1)
-							  {
-								  for (int x = 0; x < bl.cols; x += 1)
-									{
-										cout <<  (float)bl.at<uchar>(y,x) << ",";
-									}
-								  cout << endl;
-							  }
-						}
-                        blocks.push_back(y_(cv::Rect(y, x, (y_.cols / colDivisor), (y_.rows / rowDivisor))).clone());
-                    }
+					if (y == 0 && x == 8)
+					{
+						cout <<  "x=" << x << ", y=" << y << endl;
+						Mat bl = y_(cv::Rect(y, x, (y_.cols / colDivisor), (y_.rows / rowDivisor)));
+						for(int y = 0; y < bl.rows; y += 1)
+							{
+								for (int x = 0; x < bl.cols; x += 1)
+								{
+									cout <<  (float)bl.at<uchar>(y,x) << ",";
+								}
+								cout << endl;
+							}
+					}
+
+					if (y == 8 && x == 0)
+					{
+						cout <<  "x=" << x << ", y=" << y << endl;
+						Mat bl = y_(cv::Rect(y, x, (y_.cols / colDivisor), (y_.rows / rowDivisor)));
+						for(int y = 0; y < bl.rows; y += 1)
+							{
+								for (int x = 0; x < bl.cols; x += 1)
+								{
+									cout <<  (float)bl.at<uchar>(y,x) << ",";
+								}
+								cout << endl;
+							}
+					}
+                    blocks.push_back(y_(cv::Rect(y, x, (y_.cols / colDivisor), (y_.rows / rowDivisor))).clone());
                 }
             }
+        }
+
+
+		/*cv::FileStorage file("block0.xml", cv::FileStorage::WRITE);
+		file << "matName" << blocks[0];
+		file.release();
+		cv::FileStorage file1("block1.xml", cv::FileStorage::WRITE);
+		file1 << "matName" << blocks[1];
+		file1.release();
+		cv::FileStorage file2("block2.xml", cv::FileStorage::WRITE);
+		file2 << "matName" << blocks[2];
+		file2.release();
+		cv::FileStorage file3("block3.xml", cv::FileStorage::WRITE);
+		file3 << "matName" << blocks[3];
+		file3.release();
+		cv::FileStorage file4("block4.xml", cv::FileStorage::WRITE);
+		file4 << "matName" << blocks[4];
+		file4.release();
+		cv::FileStorage file5("block5.xml", cv::FileStorage::WRITE);
+		file5 << "matName" << blocks[5];
+		file5.release();
+		cv::FileStorage file6("block6.xml", cv::FileStorage::WRITE);
+		file6 << "matName" << blocks[6];
+		file6.release();
+		cv::FileStorage file7("block7.xml", cv::FileStorage::WRITE);
+		file7 << "matName" << blocks[7];
+		file7.release();
+		cv::FileStorage file8("block8.xml", cv::FileStorage::WRITE);
+		file8 << "matName" << blocks[8];
+		file8.release();
+		cv::FileStorage file9("block9.xml", cv::FileStorage::WRITE);
+		file9 << "matName" << blocks[9];
+		file9.release();
+
+		cv::FileStorage file500("block500.xml", cv::FileStorage::WRITE);
+		file500 << "matName" << blocks[500];
+		file500.release();
+		cv::FileStorage file9599("block9599.xml", cv::FileStorage::WRITE);
+		file9599 << "matName" << blocks[9599];
+		file9599.release();*/
+		//imwrite( "block0", blocks[0] );
+
 
 		//	int i = 0;
 		//for (; i < 500; )
@@ -309,6 +371,24 @@ namespace im
 				//qDCT.push_back(dct(blocks));
 			}
 
+		//cv::FileStorage file("qDCT0.xml", cv::FileStorage::WRITE);
+		//file << "matName" << qDCT[0];
+		//file.release();
+		//cv::FileStorage file1("qDCT1.xml", cv::FileStorage::WRITE);
+		//file1 << "matName" << qDCT[1];
+		//file1.release();
+		//cv::FileStorage file500("qDCT500.xml", cv::FileStorage::WRITE);
+		//file500 << "matName" << qDCT[500];
+		//file500.release();
+
+			//vector<double> sum;
+			//for (int i = 0; i < qDCT.size(); i++)
+			//{
+			//	double s = cv::sum( qDCT[i] )[0];
+			//	sum.push_back(s);
+			//}
+		
+
 //		 cv::Mat m2(ROWS, COLS*PLANES, CV_32SC1, m3.data); // no copying happening here
 //cv::Mat m2xPlanes = m2.reshape(PLANES); // not sure if this involves a copy
 //std::vector<Mat> planes;
@@ -370,6 +450,9 @@ namespace im
 		reduce(row7, row_mean, 0, CV_REDUCE_AVG);
 		meanMat.push_back(row_mean.clone());
 
+		//cv::FileStorage file("mean.xml", cv::FileStorage::WRITE);
+		//file << "matName" << meanMat;
+		//file.release();
 
 		//cout << meanMat << endl;
 
@@ -396,6 +479,22 @@ namespace im
 			subAll.push_back(conv);
 		}
 
+		//cv::FileStorage file("subtract0.xml", cv::FileStorage::WRITE);
+		//file << "matName" << subAll[0];
+		//file.release();
+
+		//cv::FileStorage file2("subtract1.xml", cv::FileStorage::WRITE);
+		//file2 << "matName" << subAll[1];
+		//file2.release();
+
+		//cv::FileStorage file500("subtract500.xml", cv::FileStorage::WRITE);
+		//file500 << "matName" << subAll[500];
+		//file500.release();
+
+		//cv::FileStorage file9599("subtract9599.xml", cv::FileStorage::WRITE);
+		//file9599 << "matName" << subAll[9599];
+		//file9599.release();
+
 		//cout << subAll[0] << endl;
 
 		
@@ -407,6 +506,11 @@ namespace im
 			data.push_back(sub.at<int>(0,0));
 		}
 
+		//std::ofstream output_file("data.txt");
+		//std::ostream_iterator<int> output_iterator(output_file, "\n");
+		//std::copy(data.begin(), data.end(), output_iterator);
+		//output_file.close();
+
 		int max = *std::max_element(data.begin(), data.end());
 		int min = *std::min_element(data.begin(), data.end());
 
@@ -416,6 +520,20 @@ namespace im
 			minMaxArray.push_back(i);
 		}*/
 		
+		//static const int arr[] = { -915, -908, -907, -907, -907, -907, -907, -907, -907, -905, -899, -899, -899, -899, -899, -898, -898, -898, -898, -898, -898, -898, -898, -898, -898, -898, -897 };
+		//vector<int> testData (arr, arr + sizeof(arr) / sizeof(arr[0]) );
+
+		//std::ifstream is("testdata");
+		//std::istream_iterator<int> start(is), end;
+		//std::vector<int> testData(start, end);
+		//std::cout << "Read " << testData.size() << " numbers" << std::endl;
+
+		// print the numbers to stdout
+		//std::cout << "numbers read in:\n";
+		//std::copy(numbers.begin(), numbers.end(), 
+		//std::ostream_iterator<double>(std::cout, " "));
+		//std::cout << std::endl;
+
 		//Histogram histogram(data);
 		//Histogram histogram(minMaxArray.size(), min, max, 0);
 		
@@ -451,11 +569,20 @@ namespace im
 		double s = cv::sum( b_hist )[0];
 		//cout << b_hist << endl;
 
+		//cv::FileStorage fileHist("hist.xml", cv::FileStorage::WRITE);
+		//fileHist << "matName" << b_hist;
+		//fileHist.release();
+
 		//Mat histImage( hist_h, hist_w, CV_8UC3, Scalar( 0,0,0) );
 		/// Normalize the result to [ 0, histImage.rows ]
 		normalize(b_hist, b_hist, 0, 1, NORM_MINMAX, -1, Mat() );
 		//cout << b_hist << endl;
 
+		//cv::FileStorage file("hist.xml", cv::FileStorage::WRITE);
+		//file << "matName" << b_hist;
+		//file.release();
+		
+		/*
 		Mat C = (Mat_<float>(1,11) << 0.00010416666666666667, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.00010416666666666667, 0.0007291666666666667, 0.0, 0.00010416666666666667);
 		//cout << C << endl;
 		 
@@ -509,6 +636,8 @@ namespace im
 		//log(magI, magI);
 		//cout << magI << endl;
 
+		*/
+
 		Mat planes2[] = {Mat_<float>(b_hist), Mat::zeros(b_hist.size(), CV_32F)};
 		Mat complexI2;
 		merge(planes2, 2, complexI2);         // Add to the expanded another plane with zeros
@@ -520,6 +649,10 @@ namespace im
 		//dft(b_hist, b_hist );
 		//cout << "dft" << endl;
 		//cout << b_hist << endl;
+
+		cv::FileStorage fileZ("z.xml", cv::FileStorage::WRITE);
+		fileZ << "matName" << magI2;
+		fileZ.release();
 		
 		try
 		{
