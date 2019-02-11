@@ -25,7 +25,7 @@ namespace im
 		//Error Initialize(void);
 		//Error Release(void);
 
-		static ImageInfo CalculateImageMetric(const WChar* image, WorkProgressInteropNegotiator& negotiator);
+		static Error CalculateImageMetric(const WChar* imagePath, WorkProgressInteropNegotiator& negotiator, ImageInfo * exportImageInfo);
 		static ImageInfo ResizeAndCalculateImageMetric(const WChar* image, int width, int heigth);
 	};
 

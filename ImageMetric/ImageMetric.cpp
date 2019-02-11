@@ -20,11 +20,10 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 }
 
 
-DLLAPI Error CalculateImageMetric(const WChar* imagePath, WorkProgressInteropNegotiator& negotiator)
-{
-	
-	ImageInfo info = im::Engine::CalculateImageMetric(imagePath, negotiator);
-	return Error::OK;
+DLLAPI Error CalculateImageMetric(const WChar* imagePath, WorkProgressInteropNegotiator& negotiator, ImageInfo * exportImageInfo)
+{	
+	return im::Engine::CalculateImageMetric(imagePath, negotiator, exportImageInfo);
+	//return Error::OK;
 	//if (!im::OpenCVHelper::ReadImage(img, *file, negotiator))
 	//							return NULL;
 

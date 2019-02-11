@@ -124,7 +124,7 @@ namespace ImageMetricNetAdapter
         */
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-        public delegate Error CalculateImageMetric_fn(string imagePath, [In, Out] WorkProgressInteropNegotiator negotiator);
+        public delegate Error CalculateImageMetric_fn(string imagePath, [In, Out] WorkProgressInteropNegotiator negotiator, IntPtr exportResult);
         [DynamicModuleApi]
         public CalculateImageMetric_fn CalculateImageMetric = null;
 
@@ -174,6 +174,7 @@ namespace ImageMetricNetAdapter
             public string Path;
             public double JpegQuality;
             public double Sharpness;
+            public int JpegPeak;
             public uint FileSize;
             public uint Width;
             public uint Height;

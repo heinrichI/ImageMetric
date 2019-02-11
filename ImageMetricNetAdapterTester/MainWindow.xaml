@@ -7,6 +7,8 @@
             <Label>Path</Label>
             <TextBox Text="{Binding Path, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <Button Command="{Binding GoCommand}">Go</Button>
+            <Label>Jpeg peaks</Label>
+            <TextBlock Text="{Binding JpegPeak}"></TextBlock>
         </StackPanel>
     </Grid>
 </Window>

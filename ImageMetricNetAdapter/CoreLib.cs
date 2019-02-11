@@ -82,9 +82,13 @@ namespace ImageMetricNetAdapter
         //    return _dll.PostCheckBySURF(negotiator);
         //}
 
-        public CoreDll.Error CalculateImageMetric(string path)
+        public CoreDll.ImageInfo CalculateImageMetric(string path, CoreDll.WorkProgressInteropNegotiator negotiator)
         {
-            return _dll.CalculateImageMetric(path, null);
+            int elemSize = Marshal.SizeOf(typeof(CoreDll.ImageInfo));
+            IntPtr ptr = Marshal.AllocHGlobal(elemSize);
+            _dll.CalculateImageMetric(path, negotiator, ptr);
+            CoreDll.ImageInfo dpExport = (CoreDll.ImageInfo)Marshal.PtrToStructure(ptr, typeof(CoreDll.ImageInfo));
+            return dpExport;
         }
 
 
