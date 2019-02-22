@@ -225,13 +225,13 @@ namespace im
 			else
 				padded = img;
 
-			Mat img2;
-			img2.create(dct_rows, dct_cols, CV_8U);
-			padded.convertTo(img2, CV_8U); // or CV_32F works (too)
+			//Mat img2;
+			//img2.create(dct_rows, dct_cols, CV_8U);
+			//padded.convertTo(padded, CV_8U); // or CV_32F works (too)
 
 			Mat BGR2YCrCb_image;
 			//BGR2YCrCb_image.create(dct_rows, dct_cols, CV_8U);
-			cvtColor(img2, BGR2YCrCb_image, COLOR_BGR2YCrCb);
+			cvtColor(padded, BGR2YCrCb_image, COLOR_BGR2YCrCb);
 
 			vector<Mat> bgr_planes;
 			split( BGR2YCrCb_image, bgr_planes );
@@ -363,7 +363,7 @@ namespace im
 									cout << endl;
 								}
 						}*/
-						blocks.push_back(y_(cv::Rect(y, x, (y_.cols / colDivisor), (y_.rows / rowDivisor))).clone());
+						blocks.push_back(y_(cv::Rect(y, x, (y_.cols / colDivisor), (y_.rows / rowDivisor))));
 					}
 				}
 			}
@@ -484,9 +484,10 @@ namespace im
 					//Mat img3;
 					//img3.create(blocks[i].size(), CV_64F);
 					//blocks[i].convertTo(img3, CV_64F);
-					Mat img3 = Mat(blocks[i].rows, blocks[i].cols, CV_32F);
-					blocks[i].convertTo(img3, CV_32F);
-					img3.convertTo(img3, CV_32F);
+					//Mat img3 = Mat(blocks[i].rows, blocks[i].cols, CV_32F);
+					//blocks[i].convertTo(img3, CV_32F);
+					//img3.convertTo(img3, CV_32F);
+					blocks[i].convertTo(blocks[i], CV_32F);
 
 					//for (int y = 0; y < blocks[i].size().height; y++)
 					//{
@@ -510,9 +511,10 @@ namespace im
 	//Mat img3 = Mat( img2.rows, img2.cols, CV_64F);
 	//img2.convertTo(img3, CV_64F);
 
-					dct(img3, dct_result);
+
+					dct(blocks[i], dct_result);
 					//cout << dct_result.type() << endl;
-					qDCT.push_back(dct_result.clone());
+					qDCT.push_back(dct_result);
 
 					//cout <<  "dct" << endl;
 					//for(int y = 0; y < dct_result.rows; y += 1)
@@ -593,21 +595,21 @@ namespace im
 			cv::Mat meanMat;
 
 			reduce(row0, row_mean, 0, CV_REDUCE_AVG);
-			meanMat.push_back(row_mean.clone());
+			meanMat.push_back(row_mean);
 			reduce(row1, row_mean, 0, CV_REDUCE_AVG);
-			meanMat.push_back(row_mean.clone());
+			meanMat.push_back(row_mean);
 			reduce(row2, row_mean, 0, CV_REDUCE_AVG);
-			meanMat.push_back(row_mean.clone());
+			meanMat.push_back(row_mean);
 			reduce(row3, row_mean, 0, CV_REDUCE_AVG);
-			meanMat.push_back(row_mean.clone());
+			meanMat.push_back(row_mean);
 			reduce(row4, row_mean, 0, CV_REDUCE_AVG);
-			meanMat.push_back(row_mean.clone());
+			meanMat.push_back(row_mean);
 			reduce(row5, row_mean, 0, CV_REDUCE_AVG);
-			meanMat.push_back(row_mean.clone());
+			meanMat.push_back(row_mean);
 			reduce(row6, row_mean, 0, CV_REDUCE_AVG);
-			meanMat.push_back(row_mean.clone());
+			meanMat.push_back(row_mean);
 			reduce(row7, row_mean, 0, CV_REDUCE_AVG);
-			meanMat.push_back(row_mean.clone());
+			meanMat.push_back(row_mean);
 
 			//cv::FileStorage file("mean.xml", cv::FileStorage::WRITE);
 			//file << "matName" << meanMat;
@@ -633,9 +635,9 @@ namespace im
 			for each (Mat dct in qDCT)
 			{
 				subtract(dct, meanMat, sub);
-				Mat conv;
-				sub.convertTo(conv, CV_32S);
-				subAll.push_back(conv);
+				//Mat conv;
+				sub.convertTo(sub, CV_32S);
+				subAll.push_back(sub);
 			}
 
 			//cv::FileStorage file("subtract0.xml", cv::FileStorage::WRITE);

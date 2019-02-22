@@ -14,7 +14,7 @@ namespace ImageMetricNetAdapterTester
 
         public MainViewModel()
         {
-            Path = @"d:\Борисов\jpeg degradation Double JPEG Compression\Image-Forgery-Detection\images\1837419_orig.jpg";
+            Path = @"d:\Борисов\jpeg degradation Double JPEG Compression\Image-Forgery-Detection\images\1837419_orig_2_best.jpg";
 
             _coreLib = new CoreLib();
         }
