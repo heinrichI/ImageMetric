@@ -128,6 +128,11 @@ namespace ImageMetricNetAdapter
         [DynamicModuleApi]
         public CalculateImageMetric_fn CalculateImageMetric = null;
 
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        public delegate Error CalculateMultiImageMetric_fn([In, Out] ImageInfo[] fileArray, int size, [In, Out] WorkProgressInteropNegotiator negotiator);
+        [DynamicModuleApi]
+        public CalculateMultiImageMetric_fn CalculateMultiImageMetric = null;
+
         #endregion
 
         #region API structure
@@ -174,7 +179,7 @@ namespace ImageMetricNetAdapter
             public string Path;
             public double JpegQuality;
             public double Sharpness;
-            public int JpegPeak;
+            public uint JpegPeak;
             public uint FileSize;
             public uint Width;
             public uint Height;
@@ -188,6 +193,13 @@ namespace ImageMetricNetAdapter
             public uint CountOfHashes;
             //public uint TotalHashes;
         }
+
+        //[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+        //public struct MyFile
+        //{
+        //    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MAX_PATH_LENGTH)]
+        //    public string Path;
+        //}
 
 
         #endregion

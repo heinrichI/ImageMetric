@@ -31,7 +31,7 @@ extern "C"
 		wchar_t Path[MAX_PATH_LENGTH];
 		double JpegQuality;
 		double Sharpness;
-		int JpegPeak;
+		unsigned int JpegPeak;
 		unsigned int FileSize;
         unsigned int Width;
         unsigned int Height;
@@ -60,5 +60,7 @@ extern "C"
 
 	DLLAPI Error CalculateImageMetric(const WChar* imagePath, WorkProgressInteropNegotiator& negotiator, ImageInfo * exportImageInfo);
 	DLLAPI ImageInfo ResizeAndCalculateImageMetric(const WChar* image, int width, int heigth);
+
+	DLLAPI Error CalculateMultiImageMetric(ImageInfo* pPointArray, int size, WorkProgressInteropNegotiator& negotiator );
 
 }

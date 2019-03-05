@@ -189,5 +189,41 @@ namespace ImageMetricNetAdapter
         }*/
 
 
+
+        public void CalculateMultiImageMetric(CoreDll.ImageInfo[] files, CoreDll.WorkProgressInteropNegotiator negotiator)
+        {
+
+            _dll.CalculateMultiImageMetric(files, files.Length, negotiator);
+
+            /*List<CoreDll.ImageInfo> result = new List<CoreDll.ImageInfo>();
+            uint size;
+            size = _dll.GetResultSize();
+            // For efficiency, only compute the element size once
+            int elemSize = Marshal.SizeOf(typeof(CoreDll.DuplPairExport));
+            // Populate the array
+            for (uint i = 0; i < size; i++)
+            {
+                // Initialize unmanged memory to hold the struct.
+                IntPtr ptr = Marshal.AllocHGlobal(elemSize);
+
+                //CoreDll.DuplPairExport str = new CoreDll.DuplPairExport();
+
+                // Copy the struct to unmanaged memory.
+                // Marshal.StructureToPtr(str, ptr, false);
+
+                //IntPtr ptr = _dll.GetResult(i);
+                //CoreDll.DuplPairExport dpExport = _dll.GetResult(i);
+                _dll.FillResult(ptr, i);
+
+                CoreDll.DuplPairExport dpExport = (CoreDll.DuplPairExport)Marshal.PtrToStructure(ptr, typeof(CoreDll.DuplPairExport));
+                CheckDPExport(dpExport);
+                result.Add(new DuplPairViewModel(dpExport));
+
+                // Clean-up
+                Marshal.DestroyStructure(ptr, typeof(CoreDll.DuplPairExport));
+                // Free the unmanaged memory.
+                Marshal.FreeHGlobal(ptr);
+            }*/
+        }
     }
 }

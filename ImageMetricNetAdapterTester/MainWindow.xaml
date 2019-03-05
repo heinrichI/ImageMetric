@@ -9,6 +9,9 @@
             <Button Command="{Binding GoCommand}">Go</Button>
             <Label>Jpeg peaks</Label>
             <TextBlock Text="{Binding JpegPeak}"></TextBlock>
+            <Label>Directory</Label>
+            <TextBox Text="{Binding DirectoryPath, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Button Command="{Binding MultiImageCommand}">Multi image</Button>
         </StackPanel>
     </Grid>
 </Window>

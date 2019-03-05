@@ -35,3 +35,8 @@ DLLAPI ImageInfo ResizeAndCalculateImageMetric(const WChar* image, int width, in
 	return im::Engine::ResizeAndCalculateImageMetric(image, width, heigth);
 	//return im::ImageMetricsHelper.DrawMathes(firstImage, secondImage);
 }
+
+DLLAPI Error CalculateMultiImageMetric(ImageInfo* pPointArray, int size, WorkProgressInteropNegotiator& negotiator )
+{
+	return im::Engine::CalculateMultiImageMetric(pPointArray, size, negotiator);
+}

@@ -18,6 +18,8 @@ namespace im
 
 	class Engine
 	{
+	private:
+		//const size_t _nthreads;
 	public:
 		Engine(void);
 		~Engine(void);
@@ -27,6 +29,7 @@ namespace im
 
 		static Error CalculateImageMetric(const WChar* imagePath, WorkProgressInteropNegotiator& negotiator, ImageInfo * exportImageInfo);
 		static ImageInfo ResizeAndCalculateImageMetric(const WChar* image, int width, int heigth);
+		static Error CalculateMultiImageMetric(ImageInfo* pPointArray, int size, WorkProgressInteropNegotiator& negotiator );
 	};
 
 }

@@ -20,6 +20,13 @@
 #else
 #pragma comment (lib, "opencv_core2413.lib")
 #pragma comment (lib, "opencv_highgui2413.lib")
+#pragma comment (lib, "libtiff.lib")
+#pragma comment (lib, "libjpeg.lib")
+#pragma comment (lib, "libpng.lib")
+#pragma comment (lib, "libjasper.lib")
+#pragma comment (lib, "IlmImf.lib")
+#pragma comment (lib, "zlib.lib")
+#pragma comment (lib, "opencv_imgproc2413.lib")
 #endif
 
 
