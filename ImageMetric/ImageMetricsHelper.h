@@ -211,9 +211,6 @@ namespace im
 			else
 				dct_cols = img.cols;
 
-			//vector<Mat> bgr_planes;
-			//split( img, bgr_planes );
-
 			Mat padded;  //expand input image to optimal size
 			if (makePad)
 			{
