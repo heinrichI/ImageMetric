@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<!-- saved from url=(0094)https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays -->
+<html class="hasSidebar hasPageActions hasBreadcrumb conceptual js" lang="ru-ru" dir="ltr" data-authenticated="false" data-auth-status-determined="true" data-target="docs" x-ms-format-detection="none"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="./Маршалинг различных типов массивов _ Microsoft Docs_files/62-186d68"><link rel="stylesheet" href="./Маршалинг различных типов массивов _ Microsoft Docs_files/override.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="Маршалинг различных типов массивов">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@docsmsft">
+
+		<meta name="ms.devlang" content="dotnet">
+<meta name="author" content="rpetrusha">
+<meta name="ms.author" content="ronpet">
+<meta name="breadcrumb_path" content="/dotnet/breadcrumb/toc.json">
+<meta name="apiPlatform" content="dotnet">
+<meta name="ms.topic" content="conceptual">
+<meta name="bilingual_type" content="hover over">
+<meta name="ms.prod" content="dotnet-framework">
+<meta name="uhfHeaderId" content="MSDocsHeader-DotNet">
+<meta name="ms.openlocfilehash" content="147c22758c68bd3b48ab1c5cf8e26ed0afdbce09">
+<meta name="ms.assetid" content="c5ac9920-5b6e-4dc9-bf2d-1f6f8ad3b0bf">
+<meta name="ms.contentlocale" content="ru-RU">
+<meta name="ms.lasthandoff" content="02/13/2019">
+<meta name="ms.translationtype" content="HT">
+<meta name="ms.sourcegitcommit" content="30e2fe5cc4165aa6dde7218ec80a13def3255e98">
+<meta name="ms.date" content="03/30/2017">
+<meta name="ms.locfileid" content="56219468">
+<meta name="search.ms_sitename" content="Docs">
+<meta name="search.ms_docsetname" content="core-docs">
+<meta name="locale" content="ru-ru">
+<meta name="site_name" content="Docs">
+<meta name="search.ms_product" content="VS">
+<meta name="depot_name" content="VS.core-docs">
+<meta name="updated_at" content="2019-02-19 01:39 PM">
+<meta name="gitcommit" content="https://github.com/dotnet/docs.ru-ru/blob/71cfdfa91c572ae15a2136f2ec0e03092f0364cb/docs/framework/interop/marshaling-different-types-of-arrays.md">
+<meta name="original_content_git_url" content="https://github.com/dotnet/docs.ru-ru/blob/live-sxs/docs/framework/interop/marshaling-different-types-of-arrays.md">
+<meta name="document_id" content="d46fd7e3-b68d-7568-1c0a-f7aa37f80fe4">
+<meta name="document_version_independent_id" content="ff43d2ce-4164-abcd-60cc-439a0d11a8de">
+<meta name="page_type" content="conceptual">
+<meta name="toc_rel" content="toc.json">
+<meta name="search.mshattr.devlang" content="csharp vb">
+<meta name="word_count" content="2497">
+
+	<meta name="scope" content=".NET">
+<link href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays" rel="canonical">
+	<title>Маршалинг различных типов массивов | Microsoft Docs</title>
+
+		<link rel="stylesheet" href="./Маршалинг различных типов массивов _ Microsoft Docs_files/828d5125.site-ltr.css">
+
+	<link rel="stylesheet" href="./Маршалинг различных типов массивов _ Microsoft Docs_files/baf7101.conceptual.css">
+
+
+	<script async="" src="https://www.google-analytics.com/analytics.js"></script><script>
+	var msDocs = {
+		data:{
+			azureHeaderLocale: 'ru-ru',
+			contentLocale: 'ru-ru',
+			contentDir: 'ltr',
+			userLocale: 'ru-ru',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {
+
+			},
+			hasComments: true,
+			feedbackSystem: 'GitHub',
+			feedbackGitHubRepo: 'dotnet/docs.ru-ru',
+			feedbackProductUrl: 'https://developercommunity.visualstudio.com/spaces/61/index.html',
+			contentGitUrl: 'https://github.com/dotnet/docs.ru-ru/blob/live/docs/framework/interop/marshaling-different-types-of-arrays.md',
+			learnBannerDetails: {
+				learnBannerProducts: ''
+			}
+		},
+		functions:{},
+		settings:{
+			extendBreadcrumb: false,
+			enableUHFPPE: true
+		}
+	};
+	if (!('Promise' in window && 'resolve' in window.Promise && 'reject' in window.Promise && 'all' in window.Promise && 'race' in window.Promise)) {
+		document.write('<script src="/_themes/docs.theme/master/ru-ru/_themes/global/js/6ee34c01.bluebird.min.js"><\/script>');
+	}
+	if (typeof fetch !== 'function') {
+		document.write('<script src="/_themes/docs.theme/master/ru-ru/_themes/global/js/d9fc435c.fetch.min.js"><\/script>');
+	}
+	if (typeof HTMLTemplateElement === 'undefined') {
+		document.write('<script src="/_themes/docs.theme/master/ru-ru/_themes/global/js/96af6a8d.template.min.js"><\/script>');
+	}
+	</script><style></style>
+
+	<script src="./Маршалинг различных типов массивов _ Microsoft Docs_files/jquery-3.3.1.min.js.Без названия" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+		<script src="./Маршалинг различных типов массивов _ Microsoft Docs_files/183732d1.index-docs.js.Без названия"></script><style></style><script src="https://az725175.vo.msecnd.net/scripts/jsll-4.js" async="" defer=""></script>
+
+<script>bazadebezolkohpepadr="1690688671"</script><script type="text/javascript" src="https://docs.microsoft.com/akam/10/64c5dda1" defer=""></script><script src="./Маршалинг различных типов массивов _ Microsoft Docs_files/18-d72213" defer=""></script><style>
+			.c-uhfh input[type="search"],
+			.c-uhfh.c-sgl-stck .c-uhfh-actions .c-search input[type="search"] {
+				padding-left: 69px !important;
+			}</style></head>
+
+<body lang="ru-ru" dir="ltr">
+<div class="header-holder">
+		<div id="headerAreaHolder" data-bi-name="header">    <div id="headerArea" class="uhf" data-m="{&quot;cN&quot;:&quot;headerArea&quot;,&quot;cT&quot;:&quot;Area_coreuiArea&quot;,&quot;id&quot;:&quot;a1Body&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;Body&quot;}">
+                <div id="headerRegion" data-region-key="headerregion" data-m="{&quot;cN&quot;:&quot;headerRegion&quot;,&quot;cT&quot;:&quot;Region_coreui-region&quot;,&quot;id&quot;:&quot;r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;a1&quot;}">
+
+    <div id="headerUniversalHeader" data-m="{&quot;cN&quot;:&quot;headerUniversalHeader&quot;,&quot;cT&quot;:&quot;Module_coreui-universalheader&quot;,&quot;id&quot;:&quot;m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;r1a1&quot;}" data-module-id="Category|headerRegion|coreui-region|headerUniversalHeader|coreui-universalheader">
+        
+
+
+
+
+
+		<a id="uhfSkipToMain" class="m-skip-to-main" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#main" tabindex="0" style="z-index:3000002" data-m="{&quot;cN&quot;:&quot;Skip to content_nonnav&quot;,&quot;id&quot;:&quot;nn1m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;m1r1a1&quot;}">Перейти к основному контенту</a>
+
+
+<header role="banner" class="c-uhfh context-uhf c-sgl-stck c-category-header" itemscope="itemscope" data-header-footprint="/MSDocs/MSDocsHeader-DotNet, fromService: True" data-ckrate="1" data-magict="true" itemtype="http://schema.org/Organization">
+	<div class="theme-light js-global-head f-closed  global-head-cont" data-m="{&quot;cN&quot;:&quot;Universal Header_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;m1r1a1&quot;}">
+		<div class="c-uhfh-gcontainer-st">
+			<button type="button" class="c-action-trigger c-glyph glyph-global-nav-button" aria-label="Все от Майкрософт: разверните эту область, чтобы увидеть список продуктов и услуг Майкрософт" aria-expanded="false" data-m="{&quot;cN&quot;:&quot;Mobile menu button_nonnav&quot;,&quot;id&quot;:&quot;nn1c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2m1r1a1&quot;}"></button>
+			<button type="button" class="c-action-trigger c-glyph glyph-arrow-htmllegacy" aria-label="Закрыть поиск" aria-expanded="false" data-m="{&quot;cN&quot;:&quot;Close Search_nonnav&quot;,&quot;id&quot;:&quot;nn2c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c2m1r1a1&quot;}"></button>
+					<a id="uhfLogo" class="c-logo c-sgl-stk-uhfLogo" itemprop="url" href="https://www.microsoft.com/" aria-label="Microsoft" data-m="{&quot;cN&quot;:&quot;GlobalNav_Logo_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c2m1r1a1&quot;}">
+						<img alt="" itemprop="logo" itemscope="itemscope" class="c-image" src="./Маршалинг различных типов массивов _ Microsoft Docs_files/RE1Mu3b" role="presentation" aria-hidden="true">
+						<span role="presentation" aria-hidden="true">Microsoft</span>
+					</a>
+			<div class="f-mobile-title">
+				<button type="button" class="c-action-trigger c-glyph glyph-chevron-left" aria-label="Показать больше пунктов меню" data-m="{&quot;cN&quot;:&quot;Mobile back button_nonnav&quot;,&quot;id&quot;:&quot;nn4c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c2m1r1a1&quot;}"></button>
+				<span data-global-title="Домашняя страница Майкрософт" class="js-mobile-title">.NET</span>
+				<button type="button" class="c-action-trigger c-glyph glyph-chevron-right" aria-label="Показать больше пунктов меню" data-m="{&quot;cN&quot;:&quot;Mobile forward button_nonnav&quot;,&quot;id&quot;:&quot;nn5c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c2m1r1a1&quot;}"></button>
+			</div>
+					<div class="c-show-pipe x-hidden-vp-mobile-st">
+						<a id="uhfCatLogo" class="c-logo c-cat-logo" href="https://docs.microsoft.com/dotnet" aria-label=".NET" itemprop="url" data-m="{&quot;cN&quot;:&quot;CatNav_.NET_nav&quot;,&quot;id&quot;:&quot;n6c2m1r1a1&quot;,&quot;sN&quot;:6,&quot;aN&quot;:&quot;c2m1r1a1&quot;}">
+								<span>.NET</span>
+						</a>
+					</div>
+				<div class="cat-logo-button-cont x-hidden">
+						<button type="button" id="uhfCatLogoButton" class="c-cat-logo-button x-hidden" aria-expanded="false" aria-label=".NET" data-m="{&quot;cN&quot;:&quot;.NET_nonnav&quot;,&quot;id&quot;:&quot;nn7c2m1r1a1&quot;,&quot;sN&quot;:7,&quot;aN&quot;:&quot;c2m1r1a1&quot;}">
+							.NET
+						</button>
+				</div>
+
+
+
+			        <nav id="uhf-g-nav" aria-label="Contextual menu" class="c-uhfh-gnav" data-m="{&quot;cN&quot;:&quot;Category nav_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c8c2m1r1a1&quot;,&quot;sN&quot;:8,&quot;aN&quot;:&quot;c2m1r1a1&quot;}">
+            <ul class="js-paddle-items">
+                    <li class="single-link js-nav-menu x-hidden-none-mobile-vp uhf-menu-item">
+                        <a class="c-uhf-nav-link" href="https://docs.microsoft.com/dotnet" data-m="{&quot;cN&quot;:&quot;CatNav_Главная_nav&quot;,&quot;id&quot;:&quot;n1c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}"> Главная </a>
+                    </li>
+                                        <li class="single-link js-nav-menu uhf-menu-item">
+                            <a id="c-shellmenu_0" class="c-uhf-nav-link" href="https://docs.microsoft.com/dotnet/api/" data-m="{&quot;cN&quot;:&quot;CatNav_APIs_nav&quot;,&quot;id&quot;:&quot;n2c8c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}">APIs</a>
+                        </li>
+                        <li class="single-link js-nav-menu uhf-menu-item">
+                            <a id=".NET Core" class="c-uhf-nav-link" href="https://docs.microsoft.com/dotnet/articles/core" data-m="{&quot;cN&quot;:&quot;CatNav_.NET Core_nav&quot;,&quot;id&quot;:&quot;n3c8c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}">.NET Core</a>
+                        </li>
+                        <li class="single-link js-nav-menu uhf-menu-item">
+                            <a id=".NET Framework" class="c-uhf-nav-link" href="https://docs.microsoft.com/dotnet/articles/framework" data-m="{&quot;cN&quot;:&quot;CatNav_.NET Framework_nav&quot;,&quot;id&quot;:&quot;n4c8c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}">.NET Framework</a>
+                        </li>
+                        <li class="single-link js-nav-menu uhf-menu-item">
+                            <a id="ASP.NET" class="c-uhf-nav-link" href="https://docs.microsoft.com/aspnet" data-m="{&quot;cN&quot;:&quot;CatNav_ASP.NET_nav&quot;,&quot;id&quot;:&quot;n5c8c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}">ASP.NET</a>
+                        </li>
+                        <li class="single-link js-nav-menu uhf-menu-item">
+                            <a id="Xamarin" class="c-uhf-nav-link" href="https://developer.xamarin.com/guides/" data-m="{&quot;cN&quot;:&quot;CatNav_Xamarin_nav&quot;,&quot;id&quot;:&quot;n6c8c2m1r1a1&quot;,&quot;sN&quot;:6,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}">Xamarin</a>
+                        </li>
+                        <li class="single-link js-nav-menu uhf-menu-item">
+                            <a id="Azure" class="c-uhf-nav-link" href="https://docs.microsoft.com/azure" data-m="{&quot;cN&quot;:&quot;CatNav_Azure_nav&quot;,&quot;id&quot;:&quot;n7c8c2m1r1a1&quot;,&quot;sN&quot;:7,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}">Azure</a>
+                        </li>
+
+
+                <li id="overflow-menu" class="overflow-menu x-hidden uhf-menu-item">
+                        <div class="c-uhf-menu js-nav-menu">
+        <button data-m="{&quot;pid&quot;:&quot;Больше&quot;,&quot;id&quot;:&quot;nn8c8c2m1r1a1&quot;,&quot;sN&quot;:8,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}" type="button" aria-label="Больше" aria-expanded="false" style="white-space:nowrap">Больше</button>
+        <ul id="overflow-menu-list" aria-hidden="true" class="overflow-menu-list">
+        </ul>
+    </div>
+
+                </li>
+                            </ul>
+            
+        </nav>
+
+
+			<div class="c-uhfh-actions" data-m="{&quot;cN&quot;:&quot;Header actions_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c9c2m1r1a1&quot;,&quot;sN&quot;:9,&quot;aN&quot;:&quot;c2m1r1a1&quot;}">
+				<div class="wf-menu">        <nav id="uhf-c-nav" aria-label="All microsoft menu" data-m="{&quot;cN&quot;:&quot;GlobalNav_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c9c2m1r1a1&quot;}">
+            <ul class="js-paddle-items">
+                <li>
+                    <div class="c-uhf-menu js-nav-menu">
+                        <button type="button" class="c-button-logo all-ms-nav" aria-label="Все от Майкрософт: разверните эту область, чтобы увидеть список продуктов и услуг Майкрософт" aria-expanded="false" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_nonnav&quot;,&quot;id&quot;:&quot;nn1c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c1c9c2m1r1a1&quot;}" style="white-space: nowrap"> <span>Все продукты Microsoft</span></button>
+                        <ul class="f-multi-column f-multi-column-6" aria-hidden="true" data-m="{&quot;cN&quot;:&quot;More_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c1c9c2m1r1a1&quot;}">
+                                    <li class="c-w0-contr">
+            <ul class="c-w0">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Office_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c1c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_6" class="js-subm-uhf-nav-link" href="https://products.office.com/ru-ru/home" data-m="{&quot;cN&quot;:&quot;W0Nav_Office_nav&quot;,&quot;id&quot;:&quot;n1c1c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c1c2c1c9c2m1r1a1&quot;}">Office</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Windows_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_7" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/ru-ru/windows/" data-m="{&quot;cN&quot;:&quot;W0Nav_Windows_nav&quot;,&quot;id&quot;:&quot;n1c2c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c2c1c9c2m1r1a1&quot;}">Windows</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Xbox_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_8" class="js-subm-uhf-nav-link" href="https://www.xbox.com/" data-m="{&quot;cN&quot;:&quot;W0Nav_Xbox_nav&quot;,&quot;id&quot;:&quot;n1c3c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c2c1c9c2m1r1a1&quot;}">Xbox</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Support_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c4c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+            <a id="l1_support" class="js-subm-uhf-nav-link" href="https://support.microsoft.com/ru-ru" data-m="{&quot;cN&quot;:&quot;W0Nav_Support_nav&quot;,&quot;id&quot;:&quot;n1c4c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c4c2c1c9c2m1r1a1&quot;}">Поддержка</a>
+            
+        </li>
+            </ul>
+        </li>
+
+        <li class="f-sub-menu js-nav-menu nested-menu" data-m="{&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c5c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+
+            <button type="button" role="presentation" f-multi-parent="true" aria-expanded="false" data-m="{&quot;id&quot;:&quot;nn1c5c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c5c2c1c9c2m1r1a1&quot;}">ПО</button>
+            <ul aria-hidden="true" role="presentation">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Software_WindowsApps_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c5c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c5c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_12" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/ru-ru/windows/windows-10-apps" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Software_WindowsApps_nav&quot;,&quot;id&quot;:&quot;n1c2c5c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c5c2c1c9c2m1r1a1&quot;}">Приложения для Windows</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Software_OneDrive_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c5c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c5c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_13" class="js-subm-uhf-nav-link" href="https://onedrive.live.com/about/ru-ru/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Software_OneDrive_nav&quot;,&quot;id&quot;:&quot;n1c3c5c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c5c2c1c9c2m1r1a1&quot;}">OneDrive</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Software_Outlook_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c4c5c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c5c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_14" class="js-subm-uhf-nav-link" href="https://outlook.live.com/owa/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Software_Outlook_nav&quot;,&quot;id&quot;:&quot;n1c4c5c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c4c5c2c1c9c2m1r1a1&quot;}">Outlook</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Software_Skype_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c5c5c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c5c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_15" class="js-subm-uhf-nav-link" href="https://www.skype.com/ru/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Software_Skype_nav&quot;,&quot;id&quot;:&quot;n1c5c5c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c5c5c2c1c9c2m1r1a1&quot;}">Skype</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Software_OneNote_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c6c5c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:6,&quot;aN&quot;:&quot;c5c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_16" class="js-subm-uhf-nav-link" href="https://www.onenote.com/?omkt=ru-RU" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Software_OneNote_nav&quot;,&quot;id&quot;:&quot;n1c6c5c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c6c5c2c1c9c2m1r1a1&quot;}">OneNote</a>
+            
+        </li>
+            </ul>
+            
+        </li>
+        <li class="f-sub-menu js-nav-menu nested-menu" data-m="{&quot;cN&quot;:&quot;PCsAndDevices_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c6c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:6,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+
+            <button type="button" role="presentation" f-multi-parent="true" aria-expanded="false" data-m="{&quot;cN&quot;:&quot;GlobalNav_PCsAndDevices_nonnav&quot;,&quot;id&quot;:&quot;nn1c6c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c6c2c1c9c2m1r1a1&quot;}">Компьютеры и устройства</button>
+            <ul aria-hidden="true" role="presentation">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_PCsAndDevices_PCsAndTablets_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c6c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c6c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_18" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/ru-ru/windows/devices" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_PCsAndDevices_PCsAndTablets_nav&quot;,&quot;id&quot;:&quot;n1c2c6c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c6c2c1c9c2m1r1a1&quot;}">PCs &amp; tablets</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_PCAndDevices_Accessories_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c6c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c6c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_19" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/accessories/ru-ru" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_PCAndDevices_Accessories_nav&quot;,&quot;id&quot;:&quot;n1c3c6c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c6c2c1c9c2m1r1a1&quot;}">Аксессуары</a>
+            
+        </li>
+            </ul>
+            
+        </li>
+        <li class="f-sub-menu js-nav-menu nested-menu" data-m="{&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:7,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+
+            <button type="button" role="presentation" f-multi-parent="true" aria-expanded="false" data-m="{&quot;id&quot;:&quot;nn1c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c7c2c1c9c2m1r1a1&quot;}">Развлечения</button>
+            <ul aria-hidden="true" role="presentation">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Products_DevicesAndXbox_XboxAndGames_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c7c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_21" class="js-subm-uhf-nav-link" href="https://www.xbox.com/ru-ru/games/xbox-one?xr=shellnav" data-m="{&quot;cN&quot;:&quot;GlobalNav_Products_DevicesAndXbox_XboxAndGames_nav&quot;,&quot;id&quot;:&quot;n1c2c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c7c2c1c9c2m1r1a1&quot;}">Xbox и игры</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Entertainment_PCGames_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c7c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_22" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/ru-ru/windows/windows-10-games" data-m="{&quot;cN&quot;:&quot;GlobalNav_Entertainment_PCGames_nav&quot;,&quot;id&quot;:&quot;n1c3c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c7c2c1c9c2m1r1a1&quot;}">Игры</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Entertainment_WindowsDigitalGames_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c4c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c7c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_23" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/ru-ru/store/games/windows?icid=TopNavWindowsGames" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Entertainment_WindowsDigitalGames_nav&quot;,&quot;id&quot;:&quot;n1c4c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c4c7c2c1c9c2m1r1a1&quot;}">Игры для Windows</a>
+            
+        </li>
+            </ul>
+            
+        </li>
+        <li class="f-sub-menu js-nav-menu nested-menu" data-m="{&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:8,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+
+            <button type="button" role="presentation" f-multi-parent="true" aria-expanded="false" data-m="{&quot;id&quot;:&quot;nn1c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c8c2c1c9c2m1r1a1&quot;}">Для бизнеса</button>
+            <ul aria-hidden="true" role="presentation">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Business_MicrosoftAzure_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c8c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_25" class="js-subm-uhf-nav-link" href="https://azure.microsoft.com/ru-ru/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Business_MicrosoftAzure_nav&quot;,&quot;id&quot;:&quot;n1c2c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c8c2c1c9c2m1r1a1&quot;}">Microsoft Azure</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Business_MicrosoftDynamics365_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c8c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_26" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/ru-ru/dynamics365/home" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Business_MicrosoftDynamics365_nav&quot;,&quot;id&quot;:&quot;n1c3c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c8c2c1c9c2m1r1a1&quot;}">Microsoft Dynamics 365</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Business_Microsoft365_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c4c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c8c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_27" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/microsoft-365/?omkt=ru-RU" data-m="{&quot;cN&quot;:&quot;GlobalNav_Business_Microsoft365_nav&quot;,&quot;id&quot;:&quot;n1c4c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c4c8c2c1c9c2m1r1a1&quot;}">Microsoft 365</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Business_Enterprise_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c5c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c8c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_28" class="js-subm-uhf-nav-link" href="https://enterprise.microsoft.com/ru-ru/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Business_Enterprise_nav&quot;,&quot;id&quot;:&quot;n1c5c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c5c8c2c1c9c2m1r1a1&quot;}">Microsoft Industry</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Business_DataPlatform_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c6c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:6,&quot;aN&quot;:&quot;c8c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_29" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/ru-ru/sql-server/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Business_DataPlatform_nav&quot;,&quot;id&quot;:&quot;n1c6c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c6c8c2c1c9c2m1r1a1&quot;}">Платформа данных</a>
+            
+        </li>
+            </ul>
+            
+        </li>
+        <li class="f-sub-menu js-nav-menu nested-menu" data-m="{&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:9,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+
+            <button type="button" role="presentation" f-multi-parent="true" aria-expanded="false" data-m="{&quot;id&quot;:&quot;nn1c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c9c2c1c9c2m1r1a1&quot;}">Для разработчиков и ИТ</button>
+            <ul aria-hidden="true" role="presentation">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_DeveloperAndIT_.Net_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c9c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_31" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/net/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_DeveloperAndIT_.Net_nav&quot;,&quot;id&quot;:&quot;n1c2c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c9c2c1c9c2m1r1a1&quot;}">.NET</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_DevelopersAndIT_VisualStudio_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c9c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_32" class="js-subm-uhf-nav-link" href="https://visualstudio.microsoft.com/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_DevelopersAndIT_VisualStudio_nav&quot;,&quot;id&quot;:&quot;n1c3c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c9c2c1c9c2m1r1a1&quot;}">Visual Studio</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_ProductsandServices_WindowsServer_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c4c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c9c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_33" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/cloud-platform/windows-server" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_ProductsandServices_WindowsServer_nav&quot;,&quot;id&quot;:&quot;n1c4c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c4c9c2c1c9c2m1r1a1&quot;}">Windows Server</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_DeveloperAndIT_WindowsDevCenter_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c5c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c9c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_34" class="js-subm-uhf-nav-link" href="https://developer.microsoft.com/ru-ru/windows" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_DeveloperAndIT_WindowsDevCenter_nav&quot;,&quot;id&quot;:&quot;n1c5c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c5c9c2c1c9c2m1r1a1&quot;}">Разработка приложений для Windows</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_DeveloperAndIT_Docs.microsoft.com_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c6c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:6,&quot;aN&quot;:&quot;c9c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_35" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/ru-ru/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_DeveloperAndIT_Docs.microsoft.com_nav&quot;,&quot;id&quot;:&quot;n1c6c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c6c9c2c1c9c2m1r1a1&quot;}">Документы</a>
+            
+        </li>
+            </ul>
+            
+        </li>
+        <li class="f-sub-menu js-nav-menu nested-menu" data-m="{&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:10,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+
+            <button type="button" role="presentation" f-multi-parent="true" aria-expanded="false" data-m="{&quot;id&quot;:&quot;nn1c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c10c2c1c9c2m1r1a1&quot;}">Другое</button>
+            <ul aria-hidden="true" role="presentation">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Other_MicrosoftStore_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c10c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_37" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/ru-ru/store/b/home" data-m="{&quot;cN&quot;:&quot;GlobalNav_Other_MicrosoftStore_nav&quot;,&quot;id&quot;:&quot;n1c2c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c10c2c1c9c2m1r1a1&quot;}">Microsoft Store</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Products_SoftwareAndServices_FreeDownloadsAndSecurity_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c10c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_38" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/ru-ru/download/default.aspx" data-m="{&quot;cN&quot;:&quot;GlobalNav_Products_SoftwareAndServices_FreeDownloadsAndSecurity_nav&quot;,&quot;id&quot;:&quot;n1c3c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c10c2c1c9c2m1r1a1&quot;}">Бесплатная загрузка и средства безопасности</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Products_ForStudentsAndEducators_Education_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c4c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c10c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_39" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/ru-ru/education?icid=CNavMSCOML0_Studentsandeducation" data-m="{&quot;cN&quot;:&quot;GlobalNav_Products_ForStudentsAndEducators_Education_nav&quot;,&quot;id&quot;:&quot;n1c4c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c4c10c2c1c9c2m1r1a1&quot;}">Образование</a>
+            
+        </li>
+            </ul>
+            
+        </li>
+                                                            <li class="f-multi-column-info">
+                                    <a data-m="{&quot;id&quot;:&quot;n11c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:11,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}" href="https://www.microsoft.com/ru-ru/sitemap.aspx" aria-label="" class="c-glyph">Посмотреть карту сайта</a>
+                                </li>
+                            
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+</div>
+		<form class="c-search" autocomplete="off" id="searchForm" name="searchForm" role="search" action="https://docs.microsoft.com/ru-ru/search/index" method="GET" title="Search" data-seautosuggest="{&quot;queryParams&quot;:{&quot;market&quot;:&quot;ru-ru&quot;,&quot;clientId&quot;:&quot;7F27B536-CF6B-4C65-8638-A0F8CBDFCA65&quot;,&quot;sources&quot;:&quot;Microsoft-Terms,Iris-Products,DCatAll-Products&quot;,&quot;filter&quot;:&quot;+ClientType:StoreWeb&quot;,&quot;counts&quot;:&quot;5,1,5&quot;},&quot;familyNames&quot;:{&quot;Apps&quot;:&quot;Приложение&quot;,&quot;Books&quot;:&quot;Книга&quot;,&quot;Bundles&quot;:&quot;Пакет&quot;,&quot;Devices&quot;:&quot;Устройство&quot;,&quot;Fees&quot;:&quot;Fee&quot;,&quot;Games&quot;:&quot;Игра&quot;,&quot;MusicAlbums&quot;:&quot;Альбом&quot;,&quot;MusicTracks&quot;:&quot;Композиция&quot;,&quot;MusicVideos&quot;:&quot;Видео&quot;,&quot;MusicArtists&quot;:&quot;Исполнитель&quot;,&quot;OperatingSystem&quot;:&quot;Операционная система&quot;,&quot;Software&quot;:&quot;Программное обеспечение&quot;,&quot;Movies&quot;:&quot;Фильм&quot;,&quot;TV&quot;:&quot;ТВ&quot;,&quot;CSV&quot;:&quot;Карта оплаты&quot;,&quot;VideoActor&quot;:&quot;Актер&quot;}}" data-seautosuggestapi="https://www.microsoft.com/services/api/v3/suggest" data-m="{&quot;cN&quot;:&quot;GlobalNav_Search_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c1c9c2m1r1a1&quot;}" aria-expanded="false">
+			<input id="cli_shellHeaderSearchInput" aria-label="search expanded" aria-autocomplete="list" aria-controls="universal-header-search-auto-suggest-transparent" aria-owns="universal-header-search-auto-suggest-ul" type="search" name="search" placeholder="Search" data-m="{&quot;cN&quot;:&quot;SearchBox_nav&quot;,&quot;id&quot;:&quot;n1c3c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c1c9c2m1r1a1&quot;}"><div class="x-screen-reader" aria-live="assertive"></div>
+			<button id="search" aria-label="Поиск" class="c-glyph" data-m="{&quot;cN&quot;:&quot;Search_nav&quot;,&quot;id&quot;:&quot;n2c3c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c3c1c9c2m1r1a1&quot;}" data-bi-dnt="true" data-bi-mto="true" aria-expanded="false">
+				<span role="presentation">Поиск</span>
+			</button>
+			<div class="m-auto-suggest" id="universal-header-search-auto-suggest-transparent" role="group">
+				<ul class="c-menu" id="universal-header-search-auto-suggest-ul" aria-hidden="true" data-bi-dnt="true" data-bi-mto="true" data-js-auto-suggest-position="default" role="listbox" data-tel="jsll" data-m="{&quot;cN&quot;:&quot;search suggestions_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c3c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c3c1c9c2m1r1a1&quot;}"></ul>
+			</div>
+			
+		<input name="scope" hidden=""><a class="search-scope" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#" role="button" title="Фильтр поиска: &quot;.NET&quot;. Коснитесь, чтобы удалить." style=""><span class="search-scope-text">.NET</span> <span class="docon docon-navigate-close"></span></a></form>
+		<button data-m="{&quot;cN&quot;:&quot;cancel-search&quot;,&quot;pid&quot;:&quot;Cancel Search&quot;,&quot;id&quot;:&quot;nn4c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c1c9c2m1r1a1&quot;}" id="cancel-search" class="cancel-search" aria-label="Cancel Search">
+			<span>Отмена</span>
+		</button>
+				
+			<div class="auth-control" aria-busy="true" aria-label="Загрузка..."></div></div>
+		</div>
+		
+		
+	</div>
+	
+</header>
+
+
+
+
+    </div>
+        </div>
+
+    </div>
+</div>
+	<div class="content-header uhf-container has-padding has-default-focus" data-bi-name="content-header">
+		<nav class="has-padding-none-mobile" data-bi-name="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Навигатор">
+		<ul class="breadcrumbs"><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a itemprop="item" href="https://docs.microsoft.com/ru-ru/">Docs</a></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a itemprop="item" href="https://docs.microsoft.com/ru-ru/dotnet/index">.NET</a></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a itemprop="item" href="https://docs.microsoft.com/ru-ru/dotnet/framework/index">.NET Framework</a></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="mobile-breadcrumb"><a itemprop="item" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/index">Взаимодействие с неуправляемым кодом</a></li></ul>
+		</nav>
+		<div class="content-header-controls exit-focus">
+			<button type="button" class="ap-collapse-behavior ap-expanded button" data-bi-name="ap-collapse">
+				<span class="icon"><span class="docon docon-exit-mode"></span></span>
+				<span>Выйти из режима фокусировки</span>
+			</button>
+			
+		</div>
+		<div class="content-header-controls">
+			<button type="button" class="contents-button button" data-bi-name="contents-expand">
+				<span class="icon"><span class="docon docon-menu"></span></span>
+				<span>Содержимое</span>
+			</button>
+		</div>
+		<div class="action-bar">
+			<ul class="action-list">
+						<li>
+							<a href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#feedback" class="button is-text is-size-7 is-icon-only-touch" data-bi-name="comments">
+								<span class="icon">
+									<span class="docon docon-comment-lines" aria-hidden="true"></span>
+								</span>
+								<span class="action-item-text">Обратная связь</span>
+							</a>
+						</li>
+							<li id="contenteditbtn">
+									<a href="https://github.com/dotnet/docs.ru-ru/blob/live/docs/framework/interop/marshaling-different-types-of-arrays.md" class="button is-text is-icon-only-touch is-size-7" title="Редактировать этот документ" data-bi-name="edit" data-original_content_git_url="https://github.com/dotnet/docs.ru-ru/blob/live-sxs/docs/framework/interop/marshaling-different-types-of-arrays.md" data-original_content_git_url_template="" data-pr_repo="" data-pr_branch="">
+									<span class="icon">
+										<span class="docon docon-edit-outline" aria-hidden="true"></span>
+									</span>
+									<span class="action-item-text">Изменить</span>
+								</a>
+							</li>
+				<li>
+					<div class="sharing dropdown has-caret" auto-align="">
+						<a href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#" class="dropdown-trigger button is-text is-size-7 is-icon-only-touch" aria-haspopup="true" aria-controls="sharing-menu" aria-expanded="false" title="Поделиться этим документом" data-bi-name="share">
+							<span class="icon">
+								<span class="docon docon-sharing" aria-hidden="true"></span>
+							</span>
+							<span class="action-item-text">Поделиться</span>
+						</a>
+						<div class="dropdown-menu" id="sharing-menu" role="menu">
+							<ul data-bi-name="share-links">
+								<li><a class="share-twitter" data-bi-name="twitter" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdocs.microsoft.com%2Fru-ru%2Fdotnet%2Fframework%2Finterop%2Fmarshaling-different-types-of-arrays%3FWT.mc_id%3Dtwitter&amp;text=%D0%9C%D0%B0%D1%80%D1%88%D0%B0%D0%BB%D0%B8%D0%BD%D0%B3%20%D1%80%D0%B0%D0%B7%D0%BB%D0%B8%D1%87%D0%BD%D1%8B%D1%85%20%D1%82%D0%B8%D0%BF%D0%BE%D0%B2%20%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D0%BE%D0%B2%20%7C%20Microsoft%20Docs&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fru-ru%2Fdotnet%2Fframework%2Finterop%2Fmarshaling-different-types-of-arrays%3FWT.mc_id%3Dtwitter">
+									<span class="icon">
+										<span class="docon docon-brand-twitter" aria-hidden="true"></span>
+									</span>
+									<span>Twitter</span></a></li>
+								<li><a class="share-linkedin" data-bi-name="linkedin" href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fdocs.microsoft.com%2Fru-ru%2Fdotnet%2Fframework%2Finterop%2Fmarshaling-different-types-of-arrays%3FWT.mc_id%3Dlinkedin">
+									<span class="icon">
+										<span class="docon docon-brand-linkedin" aria-hidden="true"></span>
+									</span>
+									<span>LinkedIn</span></a></li>
+								<li><a class="share-facebook" data-bi-name="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.microsoft.com%2Fru-ru%2Fdotnet%2Fframework%2Finterop%2Fmarshaling-different-types-of-arrays%3FWT.mc_id%3Dfacebook">
+									<span class="icon">
+										<span class="docon docon-brand-facebook" aria-hidden="true"></span>
+									</span>
+									<span>Facebook</span></a></li>
+								<li><a class="share-email" data-bi-name="email" href="mailto:?subject=%5B%D0%9E%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%B0%D1%8F%20%D1%81%D1%82%D0%B0%D1%82%D1%8C%D1%8F%5D%20%D0%9C%D0%B0%D1%80%D1%88%D0%B0%D0%BB%D0%B8%D0%BD%D0%B3%20%D1%80%D0%B0%D0%B7%D0%BB%D0%B8%D1%87%D0%BD%D1%8B%D1%85%20%D1%82%D0%B8%D0%BF%D0%BE%D0%B2%20%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D0%BE%D0%B2%20%7C%20Microsoft%20Docs&amp;body=%D0%9C%D0%B0%D1%80%D1%88%D0%B0%D0%BB%D0%B8%D0%BD%D0%B3%20%D1%80%D0%B0%D0%B7%D0%BB%D0%B8%D1%87%D0%BD%D1%8B%D1%85%20%D1%82%D0%B8%D0%BF%D0%BE%D0%B2%20%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D0%BE%D0%B2%20%7C%20Microsoft%20Docs%0A%0Ahttps%3A%2F%2Fdocs.microsoft.com%2Fru-ru%2Fdotnet%2Fframework%2Finterop%2Fmarshaling-different-types-of-arrays%3FWT.mc_id%3Demail">
+									<span class="icon">
+										<span class="docon docon-mail-message-fill" aria-hidden="true"></span>
+									</span>
+									<span>Адрес электронной почты</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li>
+					<button class="toggle-theme button is-text is-size-7 is-icon-only-touch" aria-label="toggle-theme" data-bi-name="select-theme">
+						<span class="icon">
+							<span class="docon docon-clear-night"></span>
+						</span>
+						<span class="action-item-text">Темная</span>
+					</button>
+				</li>
+				<li>
+					<div class="lang-toggle-container" style="display: flex;">
+						<label for="language-toggle" aria-hidden="true" tabindex="-1">Прочитать на английском</label>
+						<div class="checkbox-toggle-wrapper">
+							<input type="checkbox" id="language-toggle" aria-label="Прочитать на английском" data-m="{&quot;cN&quot;:&quot;language-toggle&quot;,&quot;value&quot;:&quot;off&quot;}">
+							<label for="language-toggle" class="switch"></label>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="language dropdown has-caret" auto-align="">
+						<button class="dropdown-trigger button is-text is-size-7" aria-haspopup="true" aria-controls="language-menu" aria-expanded="false" title="Язык" data-bi-name="language">
+							<span class="icon">
+								<span class="docon docon-code-lang" aria-hidden="true"></span>
+							</span>
+							<span id="lang-title" class="action-item-text">C#</span>
+						</button>
+						<div class="dropdown-menu" name="language-selector" id="language-selector" role="menu">
+							<ul data-bi-name="language-links">
+									<li><a data-bi-name="lang-csharp" tabindex="0" aria-selected="false">C#</a></li>
+									<li><a data-bi-name="lang-vb" tabindex="0" aria-selected="false">VB</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li class="is-unstyled-action-list-item">
+					<a class="docs-sign-in auth-status-determined not-authenticated button is-text has-text-primary is-size-7" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#">Войти</a>
+					<div class="dropdown has-caret auth-status-determined authenticated" auto-align="">
+						<button class="dropdown-trigger button is-text is-size-7 is-icon-only-touch has-inner-focus" aria-label="Ваша учетная запись" aria-haspopup="true" aria-controls="user-menu" aria-expanded="false">
+							<span class="image icon" aria-hidden="true">
+								<img class="has-body-background-medium is-rounded" data-profile-property="avatarUrl">
+							</span>
+							<span class="is-truncated" data-profile-property="userName"></span>
+						</button>
+						<div class="dropdown-menu box" id="user-menu" role="menu">
+							<div class="media is-user-dir">
+								<div class="media-left">
+									<span class="image is-64x64" aria-hidden="true">
+										<img class="has-body-background-medium is-rounded" data-profile-property="avatarUrl">
+									</span>
+								</div>
+								<div class="media-content">
+									<p class="title has-margin-top-small">
+										<span class="is-truncated" style="max-width: 200px" data-profile-property="userName"></span>
+									</p>
+									<p class="subtitle">
+										<span class="is-truncated" style="max-width: 200px" data-profile-property="upn"></span>
+									</p>
+								</div>
+							</div>
+							<ul class="is-unstyled has-margin-none">
+								<li><a href="https://docs.microsoft.com/profile" data-profile-property="profileUrl">Профиль</a></li>
+								<li><a class="docs-sign-out" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#">Выйти</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<button type="button" class="contents-button" aria-label="Содержимое" data-bi-name="contents-expand-">
+				<span class="docon docon-editor-list-bullet"></span><span>Contents</span>
+			</button>
+		</div>
+	</div>
+
+
+	<div id="disclaimer-holder" class="has-overflow-hidden">
+			<section class="uhf-container has-padding has-padding-top-small has-padding-bottom-small is-info alert is-banner sxs-translation">
+				<button type="button" class="delete is-absolute-top-right is-large"><span class="visually-hidden">Отклонить предупреждение</span></button>
+				<div class="level">
+					<div class="level-left has-flex-shrink">
+						<div class="level-item has-flex-shrink">
+							<p class="has-text-white-static disclaimer-title has-margin-top-extra-small has-line-height-reset is-size-7-mobile">
+								<span class="icon">
+									<span class="docon docon-status-error-outline" aria-hidden="true"></span>
+								</span>
+								<span>Текст статьи на английском языке можно просматривать во всплывающем окне, перемещая курсор мыши по тексту.</span>
+							</p>
+						</div>
+					</div>
+					
+				<div class="level-right"><div class="level-item"><button class="button is-info"><span class="translation-enable">Включить</span><span class="translation-disable">Отключить</span></button></div></div></div>
+			</section>
+			</div>
+	</div>
+
+	<div class="mainContainer uhf-container  has-top-padding  has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps ">
+
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<div class="columns has-large-gaps ">
+
+					<div id="page-actions" class="right-container column is-one-quarter is-one-fifth-desktop is-hidden-mobile is-hidden-tablet-only" data-bi-name="pageactions" role="complementary" aria-label="Действия страницы">
+							<nav id="side-doc-outline" class="doc-outline" data-bi-name="intopic toc" role="navigation" aria-label="Навигация в пределах страницы" style="width: 160.575px; top: 24px; bottom: 24px;">
+								<h3>В этой статье</h3>
+							<ol><li class="selected"><a href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#example">Пример</a></li><li><a href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#see-also">См. также</a></li></ol></nav>
+					</div>
+
+
+				<div id="main-column" class="column  is-full is-four-fifths-desktop ">
+
+					<main id="main" role="main" class="content " data-bi-name="content" lang="ru-ru" dir="ltr">
+
+
+
+						<h1 id="marshaling-different-types-of-arrays" sourcefile="docs/framework/interop/marshaling-different-types-of-arrays.md" sourcestartlinenumber="20"><span data-ttu-id="0f3e8-102" translation="Marshaling Different Types of Arrays">Маршалинг различных типов массивов</span><span class="sxs-lookup"><span data-stu-id="0f3e8-102">Marshaling Different Types of Arrays</span></span></h1>
+
+						<ul class="metadata page-metadata" data-bi-name="page info" lang="ru-ru" dir="ltr">
+							<li class="displayDate">
+								<time role="presentation" datetime="2017-03-30T00:00:00.000Z" data-article-date-source="ms.date">30.03.2017</time>
+							</li>
+								<li class="readingTime">
+									Время чтения: 12 мин
+								</li>
+							<li class="contributors-holder">
+								<span class="contributors-text">Соавторы</span>
+								<ul class="contributors" data-bi-name="contributors">
+											<li><a href="https://github.com/rpetrusha" title="Ron Petrusha" data-bi-name="contributorprofile"><img src="./Маршалинг различных типов массивов _ Microsoft Docs_files/rpetrusha.png" data-src="https://github.com/rpetrusha.png?size=32" alt="Ron Petrusha"></a></li>
+											<li><a href="https://github.com/olprod" title="olprod" data-bi-name="contributorprofile"><img src="./Маршалинг различных типов массивов _ Microsoft Docs_files/olprod.png" data-src="https://github.com/olprod.png?size=32" alt="olprod"></a></li>
+											<li><a href="https://github.com/OpenLocalizationService" title="OpenLocalizationService" data-bi-name="contributorprofile"><img src="./Маршалинг различных типов массивов _ Microsoft Docs_files/OpenLocalizationService.png" data-src="https://github.com/OpenLocalizationService.png?size=32" alt="OpenLocalizationService"></a></li>
+											<li><a href="https://github.com/Saisang" title="Saisang Cai" data-bi-name="contributorprofile"><img src="./Маршалинг различных типов массивов _ Microsoft Docs_files/Saisang.png" data-src="https://github.com/Saisang.png?size=32" alt="Saisang Cai"></a></li>
+								</ul>
+							</li>
+
+						</ul>
+
+						<nav id="center-doc-outline" class="doc-outline is-hidden-desktop" data-bi-name="intopic toc" role="navigation" aria-label="Навигация в пределах страницы">
+							<h3>В этой статье</h3>
+						<ol><li><a href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#example">Пример</a></li><li><a href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#see-also">См. также</a></li></ol></nav>
+
+
+						<!-- <content> -->
+							
+<p><span data-ttu-id="0f3e8-103" translation="An array is a reference type in managed code that contains one or more elements of the same type.">Массив является ссылочным типом в управляемом коде, содержащим один или несколько элементов одного и того же типа.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-103">An array is a reference type in managed code that contains one or more elements of the same type.</span></span> <span data-ttu-id="0f3e8-104" translation="Although arrays are reference types, they are passed as In parameters to unmanaged functions.">Несмотря на то, что массивы являются ссылочными типами, они передаются в неуправляемые функции в виде параметров In.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-104">Although arrays are reference types, they are passed as In parameters to unmanaged functions.</span></span> <span data-ttu-id="0f3e8-105" translation="This behavior is inconsistent with way managed arrays are passed to managed objects, which is as In/Out parameters.">Это поведение не согласуется со способом передачи управляемых массивов в управляемые объекты в виде параметров In/Out.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-105">This behavior is inconsistent with way managed arrays are passed to managed objects, which is as In/Out parameters.</span></span> <span data-ttu-id="0f3e8-106" translation="For additional details, see Copying and Pinning.">Подробнее см. в разделе <a href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/copying-and-pinning" data-linktype="relative-path">Копирование и закрепление</a>.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-106">For additional details, see <a href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/copying-and-pinning" data-linktype="relative-path">Copying and Pinning</a>.</span></span></p>
+<p><span data-ttu-id="0f3e8-107" translation="The following table lists marshaling options for arrays and describes their usage.">В таблице ниже перечислены параметры маршалинга для массивов и описывается их использование.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-107">The following table lists marshaling options for arrays and describes their usage.</span></span></p>
+<div class="table-scroll-wrapper"><table>
+<thead>
+<tr>
+<th><span data-ttu-id="0f3e8-108" translation="Array">Массив</span><span class="sxs-lookup"><span data-stu-id="0f3e8-108">Array</span></span></th>
+<th><span data-ttu-id="0f3e8-109" translation="Description">Описание</span><span class="sxs-lookup"><span data-stu-id="0f3e8-109">Description</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span data-ttu-id="0f3e8-110" translation="Of integers by value.">Целые числа по значению.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-110">Of integers by value.</span></span></td>
+<td><span data-ttu-id="0f3e8-111" translation="Passes an array of integers as an In parameter.">Передает массив целых чисел в виде параметра In.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-111">Passes an array of integers as an In parameter.</span></span></td>
+</tr>
+<tr>
+<td><span data-ttu-id="0f3e8-112" translation="Of integers by reference.">Целые числа по ссылке.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-112">Of integers by reference.</span></span></td>
+<td><span data-ttu-id="0f3e8-113" translation="Passes an array of integers as an In/Out parameter.">Передает массив целых чисел в виде параметра In/Out.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-113">Passes an array of integers as an In/Out parameter.</span></span></td>
+</tr>
+<tr>
+<td><span data-ttu-id="0f3e8-114" translation="Of integers by value (two-dimensional).">Целые числа по значению (двухмерный массив).</span><span class="sxs-lookup"><span data-stu-id="0f3e8-114">Of integers by value (two-dimensional).</span></span></td>
+<td><span data-ttu-id="0f3e8-115" translation="Passes a matrix of integers as an In parameter.">Передает матрицу целых чисел в виде параметра In.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-115">Passes a matrix of integers as an In parameter.</span></span></td>
+</tr>
+<tr>
+<td><span data-ttu-id="0f3e8-116" translation="Of strings by value.">Строки по значению.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-116">Of strings by value.</span></span></td>
+<td><span data-ttu-id="0f3e8-117" translation="Passes an array of strings as an In parameter.">Передает массив строк в виде параметра In.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-117">Passes an array of strings as an In parameter.</span></span></td>
+</tr>
+<tr>
+<td><span data-ttu-id="0f3e8-118" translation="Of structures with integers.">Структуры с целыми числами.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-118">Of structures with integers.</span></span></td>
+<td><span data-ttu-id="0f3e8-119" translation="Passes an array of structures that contain integers as an In parameter.">Передает массив структур, содержащих целые числа, в виде параметра In/Out.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-119">Passes an array of structures that contain integers as an In parameter.</span></span></td>
+</tr>
+<tr>
+<td><span data-ttu-id="0f3e8-120" translation="Of structures with strings.">Структуры со строками.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-120">Of structures with strings.</span></span></td>
+<td><span data-ttu-id="0f3e8-121" translation="Passes an array of structures that contain only integers as an In/Out parameter.">Передает массив структур, содержащих только целые числа, в виде параметра In или Out.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-121">Passes an array of structures that contain only integers as an In/Out parameter.</span></span> <span data-ttu-id="0f3e8-122" translation="Members of the array can be changed.">Элементы массива можно изменять.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-122">Members of the array can be changed.</span></span></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="example" class="heading-with-anchor"><span data-ttu-id="0f3e8-123" translation="Example">Пример</span><span class="sxs-lookup"><span data-stu-id="0f3e8-123">Example</span></span><a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#example"></a></h2>
+<p><span data-ttu-id="0f3e8-124" translation="This sample demonstrates how to pass the following types of arrays:">В этом примере показаны способы передачи массивов следующих типов:</span><span class="sxs-lookup"><span data-stu-id="0f3e8-124">This sample demonstrates how to pass the following types of arrays:</span></span></p>
+<ul>
+<li><p><span data-ttu-id="0f3e8-125" translation="Array of integers by value.">массив целых чисел по значению;</span><span class="sxs-lookup"><span data-stu-id="0f3e8-125">Array of integers by value.</span></span></p>
+</li>
+<li><p><span data-ttu-id="0f3e8-126" translation="Array of integers by reference, which can be resized.">массив целых чисел, размер которого может быть изменен, по ссылке;</span><span class="sxs-lookup"><span data-stu-id="0f3e8-126">Array of integers by reference, which can be resized.</span></span></p>
+</li>
+<li><p><span data-ttu-id="0f3e8-127" translation="Multidimensional array (matrix) of integers by value.">многомерный массив (матрица) целых чисел по значению;</span><span class="sxs-lookup"><span data-stu-id="0f3e8-127">Multidimensional array (matrix) of integers by value.</span></span></p>
+</li>
+<li><p><span data-ttu-id="0f3e8-128" translation="Array of strings by value.">массив строк по значению;</span><span class="sxs-lookup"><span data-stu-id="0f3e8-128">Array of strings by value.</span></span></p>
+</li>
+<li><p><span data-ttu-id="0f3e8-129" translation="Array of structures with integers.">массив структур с целыми числами;</span><span class="sxs-lookup"><span data-stu-id="0f3e8-129">Array of structures with integers.</span></span></p>
+</li>
+<li><p><span data-ttu-id="0f3e8-130" translation="Array of structures with strings.">массив структур со строками.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-130">Array of structures with strings.</span></span></p>
+</li>
+</ul>
+<p><span data-ttu-id="0f3e8-131" translation="Unless an array is explicitly marshaled by reference, the default behavior marshals the array as an In parameter.">Если маршалинг массива по ссылке не выполняется явным образом, то по умолчанию он осуществляется в виде параметра In.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-131">Unless an array is explicitly marshaled by reference, the default behavior marshals the array as an In parameter.</span></span> <span data-ttu-id="0f3e8-132" translation="You can change this behavior by applying the InAttribute and OutAttribute attributes explicitly.">Это поведение можно изменить, применив явным образом атрибуты <a class="xref" href="https://msdn.microsoft.com/library/system.runtime.interopservices.inattribute(v=vs.110).aspx" data-linktype="external">InAttribute</a> и <a class="xref" href="https://msdn.microsoft.com/library/system.runtime.interopservices.outattribute(v=vs.110).aspx" data-linktype="external">OutAttribute</a> .</span><span class="sxs-lookup"><span data-stu-id="0f3e8-132">You can change this behavior by applying the <a class="xref" href="https://msdn.microsoft.com/library/system.runtime.interopservices.inattribute(v=vs.110).aspx" data-linktype="external">InAttribute</a> and <a class="xref" href="https://msdn.microsoft.com/library/system.runtime.interopservices.outattribute(v=vs.110).aspx" data-linktype="external">OutAttribute</a> attributes explicitly.</span></span></p>
+<p><span data-ttu-id="0f3e8-133" translation="The Arrays sample uses the following unmanaged functions, shown with their original function declaration:">В этом примере используются перечисленные ниже неуправляемые функции, показанные со своими исходными объявлениями.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-133">The Arrays sample uses the following unmanaged functions, shown with their original function declaration:</span></span></p>
+<ul>
+<li><p><span data-ttu-id="0f3e8-134" translation="TestArrayOfInts exported from PinvokeLib.dll.">Функция<strong>TestArrayOfInts</strong> , экспортированная из PinvokeLib.dll.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-134"><strong>TestArrayOfInts</strong> exported from PinvokeLib.dll.</span></span></p>
+<div class="codeHeader" data-bi-name="code-header"><span class="language"></span>
+			<button class="action" data-bi-name="copy">
+				<span class="docon docon-edit-copy" role="presentation"></span>
+				<span>Копировать</span>
+			</button></div><pre><code>int TestArrayOfInts(int* pArray, int pSize);  
+</code></pre>
+</li>
+<li><p><span data-ttu-id="0f3e8-135" translation="TestRefArrayOfInts exported from PinvokeLib.dll.">Функция<strong>TestRefArrayOfInts</strong> , экспортированная из PinvokeLib.dll.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-135"><strong>TestRefArrayOfInts</strong> exported from PinvokeLib.dll.</span></span></p>
+<div class="codeHeader" data-bi-name="code-header"><span class="language"></span>
+			<button class="action" data-bi-name="copy">
+				<span class="docon docon-edit-copy" role="presentation"></span>
+				<span>Копировать</span>
+			</button></div><pre><code>int TestRefArrayOfInts(int** ppArray, int* pSize);  
+</code></pre>
+</li>
+<li><p><span data-ttu-id="0f3e8-136" translation="TestMatrixOfInts exported from PinvokeLib.dll.">Функция<strong>TestMatrixOfInts</strong> , экспортированная из PinvokeLib.dll.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-136"><strong>TestMatrixOfInts</strong> exported from PinvokeLib.dll.</span></span></p>
+<div class="codeHeader" data-bi-name="code-header"><span class="language"></span>
+			<button class="action" data-bi-name="copy">
+				<span class="docon docon-edit-copy" role="presentation"></span>
+				<span>Копировать</span>
+			</button></div><pre><code>int TestMatrixOfInts(int pMatrix[][COL_DIM], int row);  
+</code></pre>
+</li>
+<li><p><span data-ttu-id="0f3e8-137" translation="TestArrayOfStrings exported from PinvokeLib.dll.">Функция<strong>TestArrayOfStrings</strong> , экспортированная из PinvokeLib.dll.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-137"><strong>TestArrayOfStrings</strong> exported from PinvokeLib.dll.</span></span></p>
+<div class="codeHeader" data-bi-name="code-header"><span class="language"></span>
+			<button class="action" data-bi-name="copy">
+				<span class="docon docon-edit-copy" role="presentation"></span>
+				<span>Копировать</span>
+			</button></div><pre><code>int TestArrayOfStrings(char** ppStrArray, int size);  
+</code></pre>
+</li>
+<li><p><span data-ttu-id="0f3e8-138" translation="TestArrayOfStructs exported from PinvokeLib.dll.">Функция<strong>TestArrayOfStructs</strong> , экспортированная из PinvokeLib.dll.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-138"><strong>TestArrayOfStructs</strong> exported from PinvokeLib.dll.</span></span></p>
+<div class="codeHeader" data-bi-name="code-header"><span class="language"></span>
+			<button class="action" data-bi-name="copy">
+				<span class="docon docon-edit-copy" role="presentation"></span>
+				<span>Копировать</span>
+			</button></div><pre><code>int TestArrayOfStructs(MYPOINT* pPointArray, int size);  
+</code></pre>
+</li>
+<li><p><span data-ttu-id="0f3e8-139" translation="TestArrayOfStructs2 exported from PinvokeLib.dll.">Функция<strong>TestArrayOfStructs2</strong> , экспортированная из PinvokeLib.dll.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-139"><strong>TestArrayOfStructs2</strong> exported from PinvokeLib.dll.</span></span></p>
+<div class="codeHeader" data-bi-name="code-header"><span class="language"></span>
+			<button class="action" data-bi-name="copy">
+				<span class="docon docon-edit-copy" role="presentation"></span>
+				<span>Копировать</span>
+			</button></div><pre><code>int TestArrayOfStructs2 (MYPERSON* pPersonArray, int size);  
+</code></pre>
+</li>
+</ul>
+<p><span data-ttu-id="0f3e8-140" translation="PinvokeLib.dll is a custom unmanaged library that contains implementations for the previously listed functions and two structure variables, MYPOINT and MYPERSON."><a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/as6wyhwt(v=vs.100)" data-linktype="external" class="">PinvokeLib.dll</a> — это пользовательская неуправляемая библиотека, содержащая реализации ранее описанных функций и две переменные структуры: <strong>MYPOINT</strong> и <strong>MYPERSON</strong>.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-140"><a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/as6wyhwt(v=vs.100)" data-linktype="external">PinvokeLib.dll</a> is a custom unmanaged library that contains implementations for the previously listed functions and two structure variables, <strong>MYPOINT</strong> and <strong>MYPERSON</strong>.</span></span> <span data-ttu-id="0f3e8-141" translation="The structures contain the following elements:">Структуры содержат следующие элементы:</span><span class="sxs-lookup"><span data-stu-id="0f3e8-141">The structures contain the following elements:</span></span></p>
+<div class="codeHeader" data-bi-name="code-header"><span class="language"></span>
+			<button class="action" data-bi-name="copy">
+				<span class="docon docon-edit-copy" role="presentation"></span>
+				<span>Копировать</span>
+			</button></div><pre><code>typedef struct _MYPOINT  
+{  
+   int x;   
+   int y;   
+} MYPOINT;  
+  
+typedef struct _MYPERSON  
+{  
+   char* first;   
+   char* last;   
+} MYPERSON;  
+</code></pre>
+<p><span data-ttu-id="0f3e8-142" translation="In this sample, the MyPoint and MyPerson structures contain embedded types.">В этом примере структуры <code>MyPoint</code> и <code>MyPerson</code> содержат внедренные типы.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-142">In this sample, the <code>MyPoint</code> and <code>MyPerson</code> structures contain embedded types.</span></span> <span data-ttu-id="0f3e8-143" translation="The StructLayoutAttribute attribute is set to ensure that the members are arranged in memory sequentially, in the order in which they appear.">Чтобы гарантировать последовательное размещение членов в памяти в порядке их появления, применяется атрибут <a class="xref" href="https://msdn.microsoft.com/library/system.runtime.interopservices.structlayoutattribute(v=vs.110).aspx" data-linktype="external">StructLayoutAttribute</a> .</span><span class="sxs-lookup"><span data-stu-id="0f3e8-143">The <a class="xref" href="https://msdn.microsoft.com/library/system.runtime.interopservices.structlayoutattribute(v=vs.110).aspx" data-linktype="external">StructLayoutAttribute</a> attribute is set to ensure that the members are arranged in memory sequentially, in the order in which they appear.</span></span></p>
+<p><span data-ttu-id="0f3e8-144" translation="The LibWrap class contains a set of methods called by the App class.">Класс <code>LibWrap</code> содержит набор методов, вызываемых классом <code>App</code> .</span><span class="sxs-lookup"><span data-stu-id="0f3e8-144">The <code>LibWrap</code> class contains a set of methods called by the <code>App</code> class.</span></span> <span data-ttu-id="0f3e8-145" translation="For specific details about passing arrays, see the comments in the following sample.">Конкретные сведения о передаче массивов см. в комментариях к приведенному ниже примеру.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-145">For specific details about passing arrays, see the comments in the following sample.</span></span> <span data-ttu-id="0f3e8-146" translation="An array, which is a reference type, is passed as an In parameter by default.">Массив, который является ссылочным типом, по умолчанию передается в виде параметра In.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-146">An array, which is a reference type, is passed as an In parameter by default.</span></span> <span data-ttu-id="0f3e8-147" translation="For the caller to receive the results, InAttribute and OutAttribute must be applied explicitly to the argument containing the array.">Чтобы вызывающий объект мог получать результаты, необходимо явным образом применить атрибуты <strong>InAttribute</strong> и <strong>OutAttribute</strong> к аргументу, содержащему массив.</span><span class="sxs-lookup"><span data-stu-id="0f3e8-147">For the caller to receive the results, <strong>InAttribute</strong> and <strong>OutAttribute</strong> must be applied explicitly to the argument containing the array.</span></span></p>
+<h3 id="declaring-prototypes" class="heading-with-anchor"><span data-ttu-id="0f3e8-148" translation="Declaring Prototypes">Объявление прототипов</span><span class="sxs-lookup"><span data-stu-id="0f3e8-148">Declaring Prototypes</span></span><a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#declaring-prototypes"></a></h3>
+<div class="codeHeader" data-bi-name="code-header"><span class="language">C#</span>
+			<button class="action" data-bi-name="copy">
+				<span class="docon docon-edit-copy" role="presentation"></span>
+				<span>Копировать</span>
+			</button></div><pre><code class="lang-csharp" name="Conceptual.Interop.Marshaling#31"><span class="hljs-comment">// Declares a managed structure for each unmanaged structure.</span>
+[<span class="hljs-meta"> StructLayout( LayoutKind.Sequential )</span>]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">struct</span> MyPoint 
+{
+   <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> x; 
+   <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> y;
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyPoint</span>(<span class="hljs-params"> <span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y </span>)
+   </span>{
+      <span class="hljs-keyword">this</span>.x = x;
+      <span class="hljs-keyword">this</span>.y = y;
+   }
+}
+[<span class="hljs-meta"> StructLayout( LayoutKind.Sequential, CharSet=CharSet.Ansi )</span>]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">struct</span> MyPerson 
+{
+   <span class="hljs-keyword">public</span> String first; 
+   <span class="hljs-keyword">public</span> String last;
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyPerson</span>(<span class="hljs-params"> String first, String last </span>)
+   </span>{
+      <span class="hljs-keyword">this</span>.first = first;
+      <span class="hljs-keyword">this</span>.last = last;
+   }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">LibWrap</span>
+{
+   <span class="hljs-comment">// Declares a managed prototype for an array of integers by value.</span>
+   <span class="hljs-comment">// The array size cannot be changed, but the array is copied back.</span>
+   [<span class="hljs-meta"> DllImport( <span class="hljs-string">"..\\LIB\\PinvokeLib.dll"</span> )</span>]
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> <span class="hljs-title">TestArrayOfInts</span>(<span class="hljs-params">[In, Out] <span class="hljs-keyword">int</span>[] array, <span class="hljs-keyword">int</span> size </span>)</span>;
+   
+   <span class="hljs-comment">// Declares a managed prototype for an array of integers by reference.</span>
+   <span class="hljs-comment">// The array size can change, but the array is not copied back </span>
+   <span class="hljs-comment">// automatically because the marshaler does not know the resulting size.</span>
+   <span class="hljs-comment">// The copy must be performed manually.</span>
+   [<span class="hljs-meta"> DllImport( <span class="hljs-string">"..\\LIB\\PinvokeLib.dll"</span> )</span>]
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> <span class="hljs-title">TestRefArrayOfInts</span>(<span class="hljs-params"> <span class="hljs-keyword">ref</span> IntPtr array, 
+      <span class="hljs-keyword">ref</span> <span class="hljs-keyword">int</span> size </span>)</span>;
+   
+   <span class="hljs-comment">// Declares a managed prototype for a matrix of integers by value.</span>
+   [<span class="hljs-meta"> DllImport( <span class="hljs-string">"..\\LIB\\PinvokeLib.dll"</span> )</span>]
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> <span class="hljs-title">TestMatrixOfInts</span>(<span class="hljs-params">[In, Out] <span class="hljs-keyword">int</span>[,] pMatrix, 
+      <span class="hljs-keyword">int</span> row </span>)</span>;   
+   <span class="hljs-comment">// Declares a managed prototype for an array of strings by value.</span>
+   [<span class="hljs-meta"> DllImport( <span class="hljs-string">"..\\LIB\\PinvokeLib.dll"</span> )</span>]
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> <span class="hljs-title">TestArrayOfStrings</span>(<span class="hljs-params"> [In, Out] 
+      String[] stringArray, <span class="hljs-keyword">int</span> size </span>)</span>;
+   
+   <span class="hljs-comment">// Declares a managed prototype for an array of structures with integers.</span>
+   [<span class="hljs-meta"> DllImport( <span class="hljs-string">"..\\LIB\\PinvokeLib.dll"</span> )</span>]
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> <span class="hljs-title">TestArrayOfStructs</span>(<span class="hljs-params">[In, Out] MyPoint[] 
+      pointArray, <span class="hljs-keyword">int</span> size </span>)</span>; 
+   
+   <span class="hljs-comment">// Declares a managed prototype for an array of structures with strings.</span>
+   [<span class="hljs-meta"> DllImport( <span class="hljs-string">"..\\LIB\\PinvokeLib.dll"</span> )</span>]
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> <span class="hljs-title">TestArrayOfStructs2</span>(<span class="hljs-params"> [In, Out] 
+      MyPerson[] personArray, <span class="hljs-keyword">int</span> size </span>)</span>;
+}
+</code></pre><pre hidden=""><code class="lang-vb" name="Conceptual.Interop.Marshaling#31">' Declares a managed structure for each unmanaged structure.
+&lt; StructLayout( LayoutKind.Sequential )&gt; _
+Public Structure MyPoint
+   Public x As Integer
+   Public y As Integer
+   Public Sub New( x As Integer, y As Integer )
+      Me.x = x
+      Me.y = y
+   End Sub 'New
+End Structure 
+
+&lt; StructLayout( LayoutKind.Sequential, CharSet:=CharSet.Ansi )&gt; _
+Public Structure MyPerson
+   Public first As String
+   Public last As String
+   Public Sub New( first As String, last As String )
+      Me.first = first
+      Me.last = last
+   End Sub 'New
+End Structure 
+
+Public Class LibWrap
+   ' Declares a managed prototype for an array of integers by value.
+   ' The array size cannot be changed, but the array is copied back.
+   Declare Function TestArrayOfInts Lib "..\LIB\PinvokeLib.dll" ( _
+      &lt;[In], Out&gt; ByVal myArray() As Integer, ByVal size As Integer ) _
+      As Integer
+
+   ' Declares managed prototype for an array of integers by reference.
+   ' The array size can change, but the array is not copied back 
+   ' automatically because the marshaler does not know the resulting size.
+   ' The copy must be performed manually.
+   Declare Function TestRefArrayOfInts Lib "..\LIB\PinvokeLib.dll" ( _
+      ByRef myArray As IntPtr, ByRef size As Integer ) As Integer
+
+   ' Declares a managed prototype for a matrix of integers by value.
+   Declare Function TestMatrixOfInts Lib "..\LIB\PinvokeLib.dll" ( _
+      &lt;[In], Out&gt; ByVal matrix(,) As Integer, ByVal row As Integer ) _
+      As Integer
+
+   ' Declares a managed prototype for an array of strings by value.
+   Declare Function TestArrayOfStrings Lib "..\LIB\PinvokeLib.dll" ( _
+      &lt;[In], Out&gt; ByVal strArray() As String, ByVal size As Integer ) _
+   As Integer
+   
+   ' Declares a managed prototype for an array of structures with 
+   ' integers.
+   Declare Function TestArrayOfStructs Lib "..\LIB\PinvokeLib.dll" ( _
+      &lt;[In], Out&gt; ByVal pointArray() As MyPoint, _
+      ByVal size As Integer ) As Integer
+   
+   ' Declares a managed prototype for an array of structures with strings.
+   Declare Function TestArrayOfStructs2 Lib "..\LIB\PinvokeLib.dll" ( _
+      &lt;[In], Out&gt; ByVal personArray() As MyPerson, ByVal size _
+      As Integer ) As Integer
+End Class 
+</code></pre><h3 id="calling-functions" class="heading-with-anchor"><span data-ttu-id="0f3e8-149" translation="Calling Functions">Вызов функций</span><span class="sxs-lookup"><span data-stu-id="0f3e8-149">Calling Functions</span></span><a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#calling-functions"></a></h3>
+<div class="codeHeader" data-bi-name="code-header"><span class="language">C#</span>
+			<button class="action" data-bi-name="copy">
+				<span class="docon docon-edit-copy" role="presentation"></span>
+				<span>Копировать</span>
+			</button></div><pre><code class="lang-csharp" name="Conceptual.Interop.Marshaling#32"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">App</span>
+{
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"></span>)
+   </span>{
+      <span class="hljs-comment">// array ByVal </span>
+      <span class="hljs-keyword">int</span>[] array1 = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[ <span class="hljs-number">10</span> ];
+      Console.WriteLine( <span class="hljs-string">"Integer array passed ByVal before call:"</span> );
+      <span class="hljs-keyword">for</span>( <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; array1.Length; i++ )
+      {
+         array1[ i ] = i;
+         Console.Write( <span class="hljs-string">" "</span> + array1[ i ] );
+      }
+      <span class="hljs-keyword">int</span> sum1 = LibWrap.TestArrayOfInts( array1, array1.Length );
+      Console.WriteLine( <span class="hljs-string">"\nSum of elements:"</span> + sum1 );
+      Console.WriteLine( <span class="hljs-string">"\nInteger array passed ByVal after call:"</span> );
+      
+      <span class="hljs-keyword">foreach</span>( <span class="hljs-keyword">int</span> i <span class="hljs-keyword">in</span> array1 )
+      {
+         Console.Write( <span class="hljs-string">" "</span> + i );
+      }   
+      
+      <span class="hljs-comment">// array ByRef </span>
+      <span class="hljs-keyword">int</span>[] array2 = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[ <span class="hljs-number">10</span> ];
+      <span class="hljs-keyword">int</span> size = array2.Length;
+      Console.WriteLine( <span class="hljs-string">"\n\nInteger array passed ByRef before call:"</span> );
+      <span class="hljs-keyword">for</span>( <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; array2.Length; i++ )
+      {
+         array2[ i ] = i;
+         Console.Write( <span class="hljs-string">" "</span> + array2[ i ] );
+      }
+      IntPtr buffer = Marshal.AllocCoTaskMem( Marshal.SizeOf( size ) 
+         * array2.Length );
+      Marshal.Copy( array2, <span class="hljs-number">0</span>, buffer, array2.Length );
+      
+      <span class="hljs-keyword">int</span> sum2 = LibWrap.TestRefArrayOfInts( <span class="hljs-keyword">ref</span> buffer, <span class="hljs-keyword">ref</span> size );
+      Console.WriteLine( <span class="hljs-string">"\nSum of elements:"</span> + sum2 );
+      <span class="hljs-keyword">if</span>( size &gt; <span class="hljs-number">0</span> )
+      {
+         <span class="hljs-keyword">int</span>[] arrayRes = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[ size ];
+         Marshal.Copy( buffer, arrayRes, <span class="hljs-number">0</span>, size );
+         Marshal.FreeCoTaskMem( buffer );
+         Console.WriteLine( <span class="hljs-string">"\nInteger array passed ByRef after call:"</span> );
+         <span class="hljs-keyword">foreach</span>( <span class="hljs-keyword">int</span> i <span class="hljs-keyword">in</span> arrayRes )
+         {
+            Console.Write( <span class="hljs-string">" "</span> + i );
+         }
+      }
+      <span class="hljs-keyword">else</span>
+         Console.WriteLine( <span class="hljs-string">"\nArray after call is empty"</span> );
+         
+      <span class="hljs-comment">// matrix ByVal </span>
+      <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> DIM = <span class="hljs-number">5</span>;
+      <span class="hljs-keyword">int</span>[,] matrix = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[ DIM, DIM ];
+      
+      Console.WriteLine( <span class="hljs-string">"\n\nMatrix before call:"</span> );
+      <span class="hljs-keyword">for</span>( <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; DIM; i++ )
+      {
+         <span class="hljs-keyword">for</span>( <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; DIM; j++ )
+         {
+            matrix[ i, j ] = j;
+            Console.Write( <span class="hljs-string">" "</span> + matrix[ i, j ] );
+         }
+         Console.WriteLine( <span class="hljs-string">""</span> );
+      }
+      <span class="hljs-keyword">int</span> sum3 = LibWrap.TestMatrixOfInts( matrix, DIM );
+      Console.WriteLine( <span class="hljs-string">"\nSum of elements:"</span> + sum3 );
+      Console.WriteLine( <span class="hljs-string">"\nMatrix after call:"</span> );
+      <span class="hljs-keyword">for</span>( <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; DIM; i++ )
+      {
+         <span class="hljs-keyword">for</span>( <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; DIM; j++ )
+         {
+            Console.Write( <span class="hljs-string">" "</span> + matrix[ i, j ] );
+         }
+         Console.WriteLine( <span class="hljs-string">""</span> );
+      }
+      
+      <span class="hljs-comment">// string array ByVal </span>
+      String[] strArray = { <span class="hljs-string">"one"</span>, <span class="hljs-string">"two"</span>, <span class="hljs-string">"three"</span>, <span class="hljs-string">"four"</span>, <span class="hljs-string">"five"</span> };
+      Console.WriteLine( <span class="hljs-string">"\n\nString array before call:"</span> );
+      <span class="hljs-keyword">foreach</span>( String s <span class="hljs-keyword">in</span> strArray )
+         Console.Write( <span class="hljs-string">" "</span>+ s );
+      <span class="hljs-keyword">int</span> lenSum = LibWrap.TestArrayOfStrings( strArray, strArray.Length );
+      Console.WriteLine( <span class="hljs-string">"\nSum of string lengths:"</span> + lenSum );
+      Console.WriteLine( <span class="hljs-string">"\nString array after call:"</span> );
+      <span class="hljs-keyword">foreach</span>( String s <span class="hljs-keyword">in</span> strArray )
+      {
+         Console.Write( <span class="hljs-string">" "</span> + s );
+      }   
+      
+      <span class="hljs-comment">// struct array ByVal </span>
+      MyPoint[] points = { <span class="hljs-keyword">new</span> MyPoint(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>), <span class="hljs-keyword">new</span> MyPoint(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>), <span class="hljs-keyword">new</span> MyPoint(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>) };
+      Console.WriteLine( <span class="hljs-string">"\n\nPoints array before call:"</span> );
+      <span class="hljs-keyword">foreach</span>( MyPoint p <span class="hljs-keyword">in</span> points )
+         Console.WriteLine( <span class="hljs-string">"x = {0}, y = {1}"</span>, p.x, p.y );
+      <span class="hljs-keyword">int</span> allSum = LibWrap.TestArrayOfStructs( points, points.Length );
+      Console.WriteLine( <span class="hljs-string">"\nSum of points:"</span> + allSum );
+      Console.WriteLine( <span class="hljs-string">"\nPoints array after call:"</span> );
+      <span class="hljs-keyword">foreach</span>( MyPoint p <span class="hljs-keyword">in</span> points )
+         Console.WriteLine( <span class="hljs-string">"x = {0}, y = {1}"</span>, p.x, p.y );      
+         
+      <span class="hljs-comment">// struct with strings array ByVal </span>
+      MyPerson[] persons = { <span class="hljs-keyword">new</span> MyPerson( <span class="hljs-string">"Kim"</span>, <span class="hljs-string">"Akers"</span> ), 
+      <span class="hljs-keyword">new</span> MyPerson( <span class="hljs-string">"Adam"</span>, <span class="hljs-string">"Barr"</span> ), <span class="hljs-keyword">new</span> MyPerson( <span class="hljs-string">"Jo"</span>, <span class="hljs-string">"Brown"</span> )};
+      
+      Console.WriteLine( <span class="hljs-string">"\n\nPersons array before call:"</span> );
+      <span class="hljs-keyword">foreach</span>( MyPerson pe <span class="hljs-keyword">in</span> persons )
+        Console.WriteLine( <span class="hljs-string">"first = {0}, last = {1}"</span>, pe.first, pe.last );
+      <span class="hljs-keyword">int</span> namesSum = LibWrap.TestArrayOfStructs2( persons, persons.Length );
+      Console.WriteLine( <span class="hljs-string">"\nSum of name lengths:"</span> + namesSum );
+      Console.WriteLine( <span class="hljs-string">"\n\nPersons array after call:"</span> );
+      <span class="hljs-keyword">foreach</span>( MyPerson pe <span class="hljs-keyword">in</span> persons )
+        Console.WriteLine( <span class="hljs-string">"first = {0}, last = {1}"</span>, pe.first, pe.last );
+   }
+}
+</code></pre><pre hidden=""><code class="lang-vb" name="Conceptual.Interop.Marshaling#32">Public Class App
+   Public Shared Sub Main()
+      ' array ByVal
+      Dim array1(9) As Integer
+      
+      Console.WriteLine( "Integer array passed ByVal before call:" )
+      Dim i As Integer
+      For i = 0 To array1.Length - 1
+         array1(i) = i
+         Console.Write( " " &amp; array1(i) )
+      Next i
+      
+      Dim sum1 As Integer = LibWrap.TestArrayOfInts( array1, array1.Length )
+      Console.WriteLine( ControlChars.CrLf &amp; "Sum of elements:" &amp; sum1 )
+      Console.WriteLine( ControlChars.CrLf &amp; "Integer array passed ByVal after call:" )
+      For Each i In  array1
+         Console.Write( " " &amp; i )
+      Next i
+      
+      ' array ByRef
+      Dim array2(9) As Integer
+      Dim arraySize As Integer = array2.Length
+      Console.WriteLine( ControlChars.CrLf &amp; ControlChars.CrLf &amp; _
+         "Integer array passed ByRef before call:" )
+      For i = 0 To array2.Length - 1
+         array2(i) = i
+         Console.Write( " " &amp; array2(i) )
+      Next i
+      Dim buffer As IntPtr = Marshal.AllocCoTaskMem( Marshal.SizeOf( _
+         arraySize ) * array2.Length )
+      Marshal.Copy( array2, 0, buffer, array2.Length )
+      Dim sum2 As Integer = LibWrap.TestRefArrayOfInts( buffer, _
+         arraySize )
+      Console.WriteLine( ControlChars.CrLf &amp; "Sum of elements:" &amp; sum2 )
+      
+      If arraySize &gt; 0 Then
+         Dim arrayRes( arraySize - 1 ) As Integer
+         Marshal.Copy( buffer, arrayRes, 0, arraySize )
+         Marshal.FreeCoTaskMem( buffer )
+         
+         Console.WriteLine( ControlChars.CrLf &amp; "Integer array passed ByRef after call:" )
+         For Each i In  arrayRes
+            Console.Write( " " &amp; i )
+         Next i
+      Else
+         Console.WriteLine( ControlChars.CrLf &amp; "Array after call is empty" )
+      End If
+      
+      ' matrix ByVal 
+      Const [DIM] As Integer = 4
+      Dim matrix([DIM], [DIM]) As Integer
+      
+      Console.WriteLine( ControlChars.CrLf &amp; ControlChars.CrLf &amp; _
+         "Matrix before call:" )
+      For i = 0 To [DIM]
+         Dim j As Integer
+         For j = 0 To [DIM]
+            matrix(i, j) = j
+            Console.Write( " " &amp; matrix(i, j) )
+         Next j
+         Console.WriteLine( "" )
+      Next i
+
+      Dim sum3 As Integer = LibWrap.TestMatrixOfInts( matrix, [DIM] + 1 )
+      Console.WriteLine( ControlChars.CrLf &amp; "Sum of elements:" &amp; sum3 )
+      Console.WriteLine( ControlChars.CrLf &amp; "Matrix after call:" )
+      For i = 0 To [DIM]
+         Dim j As Integer
+         For j = 0 To [DIM]
+            Console.Write( " " &amp; matrix(i, j) )
+         Next j
+         Console.WriteLine( "" )
+      Next i
+
+      ' string array ByVal 
+      Dim strArray As String() =  { "one", "two", "three", "four", _
+        "five" }
+      Console.WriteLine( ControlChars.CrLf &amp; ControlChars.CrLf &amp; _
+        "String array before call:" )
+      Dim s As String
+      For Each s In  strArray
+         Console.Write( " " &amp; s )
+      Next s 
+      Dim lenSum As Integer = LibWrap.TestArrayOfStrings( _
+         strArray, strArray.Length )
+      Console.WriteLine( ControlChars.CrLf &amp; _
+         "Sum of string lengths:" &amp; lenSum )
+      Console.WriteLine( ControlChars.CrLf &amp; "String array after call:" )
+      For Each s In  strArray
+         Console.Write( " " &amp; s )
+      Next s
+
+      ' struct array ByVal 
+      Dim points As MyPoint() = { New MyPoint(1, 1), New MyPoint(2, 2), _
+         New MyPoint(3, 3) }
+      Console.WriteLine( ControlChars.CrLf &amp; ControlChars.CrLf &amp; _
+         "Points array before call:" )
+      Dim p As MyPoint
+      For Each p In  points
+         Console.WriteLine( "x = {0}, y = {1}", p.x, p.y )
+      Next p 
+      Dim allSum As Integer = LibWrap.TestArrayOfStructs( points, _
+         points.Length )
+      Console.WriteLine( ControlChars.CrLf &amp; "Sum of points:" &amp; allSum )
+      Console.WriteLine( ControlChars.CrLf &amp; "Points array after call:" )
+      For Each p In  points
+         Console.WriteLine( "x = {0}, y = {1}", p.x, p.y )
+      Next p 
+      
+      ' struct with strings array ByVal 
+      Dim persons As MyPerson() =  { New MyPerson( "Kim", "Akers" ), _
+         New MyPerson( "Adam", "Barr" ), _
+         New MyPerson( "Jo", "Brown" )}
+      Console.WriteLine( ControlChars.CrLf &amp; ControlChars.CrLf &amp; _
+         "Persons array before call:" )
+      Dim pe As MyPerson
+      For Each pe In  persons
+         Console.WriteLine( "first = {0}, last = {1}", pe.first, pe.last )
+      Next pe 
+      
+      Dim namesSum As Integer = LibWrap.TestArrayOfStructs2( persons, _
+         persons.Length )
+      Console.WriteLine( ControlChars.CrLf &amp; "Sum of name lengths:" &amp; _
+         namesSum )
+      Console.WriteLine( ControlChars.CrLf &amp; ControlChars.CrLf _
+         &amp; "Persons array after call:" )
+      For Each pe In  persons
+         Console.WriteLine( "first = {0}, last = {1}", pe.first, pe.last )
+      Next pe
+   End Sub 
+End Class 
+</code></pre><h2 id="see-also" class="heading-with-anchor"><span data-ttu-id="0f3e8-150" translation="See also">См. также</span><span class="sxs-lookup"><span data-stu-id="0f3e8-150">See also</span></span><a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#see-also"></a></h2>
+<ul>
+<li><a href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-data-with-platform-invoke#platform-invoke-data-types" data-linktype="relative-path"><span data-ttu-id="0f3e8-151" translation="Platform invoke data types">Типы данных в вызове неуправляемого кода</span><span class="sxs-lookup"><span data-stu-id="0f3e8-151">Platform invoke data types</span></span></a></li>
+<li><a href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/creating-prototypes-in-managed-code" data-linktype="relative-path"><span data-ttu-id="0f3e8-152" translation="Creating Prototypes in Managed Code">Создание прототипов в управляемом коде</span><span class="sxs-lookup"><span data-stu-id="0f3e8-152">Creating Prototypes in Managed Code</span></span></a></li>
+</ul>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- feedback section -->
+
+
+
+<section class="feedback-section" data-bi-name="feedback-section">
+	<h2 id="feedback">Обратная связь</h2>
+
+	<div class="alert choose-feedback-type">
+		<p>
+Мы бы хотели узнать ваше мнение. Укажите, о чем вы хотите рассказать нам.		</p>
+
+		<div class="choose-feedback-buttons">
+			<a class="button feedback-type-product has-margin-bottom-small" href="https://developercommunity.visualstudio.com/spaces/61/index.html" data-bi-name="product-feedback">
+				<span>Отзыв о продукте</span>
+				<span class="icon docon docon-navigate-external" aria-hidden="true"></span>
+			</a>
+
+			<div class="field has-addons is-inline-flex has-margin-bottom-small">
+				<div class="control has-margin-top-none has-margin-bottom-none">
+					<button class="button feedback-sign-in-button has-text-wrap" data-bi-name="feedback-sign-in">
+						<span class="icon docon docon-brand-github" aria-hidden="true"></span>
+						<span>
+							Войти и оставить отзыв о документации						</span>
+					</button>
+				</div>
+				<div class="control dropdown has-caret has-margin-top-none has-margin-bottom-none" auto-align="">
+					<button class="button dropdown-trigger has-text-wrap" aria-haspopup="true" aria-expanded="false" aria-controls="fbm0" aria-label="Развернуть меню отзывов о документации" data-bi-name="documentation-feedback-menu">
+						<span class="icon docon docon-chevron-down-light" aria-hidden="true"></span>
+					</button>
+					<div class="dropdown-menu documentation-feedback-menu" id="fbm0" role="menu">
+						Вы также можете оставить свой отзыв <a data-bi-name="create-issue-on-github" href="https://github.com/dotnet/docs.ru-ru/issues/new?title=&amp;body=%0A%0A%5B%D0%92%D0%B2%D0%B5%D0%B4%D0%B8%D1%82%D0%B5%20%D0%BE%D1%82%D0%B7%D1%8B%D0%B2%20%D0%B7%D0%B4%D0%B5%D1%81%D1%8C%5D%0A%0A%0A---%0A%23%23%23%23%20%D0%A1%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B5%0A%0A%E2%9A%A0%20*%D0%9D%D0%B5%20%D0%B2%D0%BD%D0%BE%D1%81%D0%B8%D1%82%D0%B5%20%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D0%B8%20%D0%B2%20%D1%8D%D1%82%D0%BE%D1%82%20%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB.%20%D0%AD%D1%82%D0%BE%20%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D0%BE%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D1%8B%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20docs.microsoft.com%20%D1%81%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%BC%20%D0%BD%D0%B0%20GitHub.*%0A%0A*%20ID%3A%20d46fd7e3-b68d-7568-1c0a-f7aa37f80fe4%0A*%20Version%20Independent%20ID%3A%20ff43d2ce-4164-abcd-60cc-439a0d11a8de%0A*%20Content%3A%20%5B%D0%9C%D0%B0%D1%80%D1%88%D0%B0%D0%BB%D0%B8%D0%BD%D0%B3%20%D1%80%D0%B0%D0%B7%D0%BB%D0%B8%D1%87%D0%BD%D1%8B%D1%85%20%D1%82%D0%B8%D0%BF%D0%BE%D0%B2%20%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D0%BE%D0%B2%5D(https%3A%2F%2Fdocs.microsoft.com%2Fru-ru%2Fdotnet%2Fframework%2Finterop%2Fmarshaling-different-types-of-arrays)%0A*%20Content%20Source%3A%20%5Bdocs%2Fframework%2Finterop%2Fmarshaling-different-types-of-arrays.md%5D(https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs.ru-ru%2Fblob%2Flive%2Fdocs%2Fframework%2Finterop%2Fmarshaling-different-types-of-arrays.md)%0A*%20Product%3A%20**dotnet-framework**%0A*%20GitHub%20Login%3A%20%40rpetrusha%0A*%20Microsoft%20Alias%3A%20**ronpet**">непосредственно на сайте GitHub <span class="docon docon-navigate-external" aria-hidden="true"></span></a>.					</div>
+				</div>
+			</div>
+
+			<div class="field has-addons is-inline-flex has-margin-bottom-small" hidden="">
+				<div class="control has-margin-top-none has-margin-bottom-none">
+					<button class="button feedback-form-toggle" aria-expanded="false" aria-controls="feedback-form" data-bi-name="documentation-feedback">
+Отзыв о содержимом					</button>
+				</div>
+				<div class="control dropdown has-caret has-margin-top-none has-margin-bottom-none" auto-align="">
+					<button class="button dropdown-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="fbm1" aria-label="Развернуть меню отзывов о документации" data-bi-name="documentation-feedback-menu">
+						<span class="icon docon docon-chevron-down-light" aria-hidden="true"></span>
+					</button>
+					<div class="dropdown-menu documentation-feedback-menu" id="fbm1" role="menu">
+						Вы также можете оставить свой отзыв <a data-bi-name="create-issue-on-github" href="https://github.com/dotnet/docs.ru-ru/issues/new?title=&amp;body=%0A%0A%5B%D0%92%D0%B2%D0%B5%D0%B4%D0%B8%D1%82%D0%B5%20%D0%BE%D1%82%D0%B7%D1%8B%D0%B2%20%D0%B7%D0%B4%D0%B5%D1%81%D1%8C%5D%0A%0A%0A---%0A%23%23%23%23%20%D0%A1%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B5%0A%0A%E2%9A%A0%20*%D0%9D%D0%B5%20%D0%B2%D0%BD%D0%BE%D1%81%D0%B8%D1%82%D0%B5%20%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D0%B8%20%D0%B2%20%D1%8D%D1%82%D0%BE%D1%82%20%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB.%20%D0%AD%D1%82%D0%BE%20%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D0%BE%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D1%8B%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20docs.microsoft.com%20%D1%81%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%BC%20%D0%BD%D0%B0%20GitHub.*%0A%0A*%20ID%3A%20d46fd7e3-b68d-7568-1c0a-f7aa37f80fe4%0A*%20Version%20Independent%20ID%3A%20ff43d2ce-4164-abcd-60cc-439a0d11a8de%0A*%20Content%3A%20%5B%D0%9C%D0%B0%D1%80%D1%88%D0%B0%D0%BB%D0%B8%D0%BD%D0%B3%20%D1%80%D0%B0%D0%B7%D0%BB%D0%B8%D1%87%D0%BD%D1%8B%D1%85%20%D1%82%D0%B8%D0%BF%D0%BE%D0%B2%20%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D0%BE%D0%B2%5D(https%3A%2F%2Fdocs.microsoft.com%2Fru-ru%2Fdotnet%2Fframework%2Finterop%2Fmarshaling-different-types-of-arrays)%0A*%20Content%20Source%3A%20%5Bdocs%2Fframework%2Finterop%2Fmarshaling-different-types-of-arrays.md%5D(https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs.ru-ru%2Fblob%2Flive%2Fdocs%2Fframework%2Finterop%2Fmarshaling-different-types-of-arrays.md)%0A*%20Product%3A%20**dotnet-framework**%0A*%20GitHub%20Login%3A%20%40rpetrusha%0A*%20Microsoft%20Alias%3A%20**ronpet**">непосредственно на сайте GitHub <span class="docon docon-navigate-external" aria-hidden="true"></span></a>.					</div>
+				</div>
+			</div>
+		</div>
+		<p class="has-margin-top-none"><small>Наша система обратной связи основана на принципах работы с вопросами на GitHub. Дополнительные сведения см. в <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">нашем блоге</a>.</small></p>
+	</div>
+
+	<form class="feedback-form" id="feedback-form" accept-charset="UTF-8" autocomplete="off" action="javascript:" hidden="">
+		<h3 class="feedback-form-heading current-user">
+			<img class="avatar" alt="Аватар" width="36" height="36" aria-hidden="true" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9InRyYW5zcGFyZW50IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg==">
+			<span class="username" aria-hidden="true"></span>
+			<span class="visually-hidden">Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.</span>
+		</h3>
+
+		<label>
+			<span class="visually-hidden">Заголовок вопроса</span>
+			<input class="input is-radiusless has-margin-bottom-small" name="title" type="text" placeholder="Заголовок вопроса" required="" pattern=".*\w.*">
+		</label>
+		<label>
+			<span class="visually-hidden">Оставить комментарий</span>
+			<textarea name="body" placeholder="Оставить комментарий" class="textarea is-radiusless" required=""></textarea>
+		</label>
+
+		<div class="action-container">
+			<button class="button is-primary" type="submit" name="submit">Отправить отзыв</button>
+		</div>
+	</form>
+
+	<div class="feedback-status alert is-loading" role="alert">
+		<p>Загрузка отзыва...</p>
+	</div>
+
+	<div class="feedback-tab-group tabGroup" data-tab-group-independent="" hidden="" data-bi-name="tab-group">
+		<ul role="tablist">
+			<li role="presentation">
+				<a href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#tabpanel-issues-open" role="tab" aria-controls="tabpanel-issues-open" data-tab="issues-open" aria-label="Нерешенные проблемы" data-bi-name="tab" aria-selected="true" tabindex="0"></a>
+			</li>
+			<li role="presentation">
+				<a href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#tabpanel-issues-closed" role="tab" aria-controls="tabpanel-issues-closed" data-tab="issues-closed" aria-label="Решенные проблемы" data-bi-name="tab" aria-selected="false" tabindex="-1"></a>
+			</li>
+		</ul>
+		<section id="tabpanel-issues-open" role="tabpanel" data-tab="issues-open">
+			<div class="no-issues-placeholder">Нет открытых вопросов</div>
+			<ul class="github-issues-list" aria-label="Нерешенные проблемы"></ul>
+		</section>
+		<section id="tabpanel-issues-closed" role="tabpanel" data-tab="issues-closed" hidden="hidden" aria-hidden="true">
+			<div class="no-issues-placeholder">Нет закрытых вопросов</div>
+			<ul class="github-issues-list" aria-label="Решенные проблемы"></ul>
+		</section>
+	</div>
+	<div class="action-container">
+		<a class="view-on-github" href="https://github.com/dotnet/docs.ru-ru/issues?utf8=%E2%9C%93&amp;q=%22ff43d2ce-4164-abcd-60cc-439a0d11a8de%22&amp;in=body" data-bi-name="view-on-github" hidden="">
+			<span class="docon docon-brand-github" aria-hidden="true"></span>
+			<span>Просмотреть на GitHub</span>
+			<span class="docon docon-navigate-external" aria-hidden="true"></span>
+		</a>
+	</div>
+</section>
+						<!-- end feedback section -->
+
+						<div class="footerContainer is-visible-interactive has-default-focus ">
+<footer id="footer-interactive" data-bi-name="footer" class="footer-layout">
+
+    <a data-mscc-ic="false" class="locale-selector-link" href="https://docs.microsoft.com/ru-ru/locale?target=https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays" data-bi-name="select-locale"><span class="icon docon docon-world is-size-4 has-margin-right-small"></span><span class="local-selector-link-text">Русский</span></a>
+
+    <ul class="links" data-bi-name="footerlinks">
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/previous-versions/" data-bi-name="archivelink">Документация по предыдущей версии</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/teamblog" data-bi-name="bloglink">Блог</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/contribute" data-bi-name="contributorGuide">Участие в доработке</a></li>
+			<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Конфиденциальность и файлы cookie</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/ru-ru/legal/termsofuse" data-bi-name="termsofuse">Условия использования</a></li>
+		<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Отзывы о сайте</a></li>
+		<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Товарные знаки</a></li>
+    </ul>
+</footer>
+						</div>
+					</div>
+
+					<!--end of div.columns -->
+
+				</div>
+
+			<!--end of .primary-holder -->
+			</section>
+
+				<div id="left-container" class="left-container column is-one-third-tablet is-one-quarter-desktop">
+					<nav class="sidebar" id="sidebar" data-bi-name="left toc" role="navigation" aria-label="Главная панель навигации" style="width: 299.638px; top: 24px; bottom: 24px;">
+						<button class="sidebar-header" type="button" aria-label="Закрыть" data-bi-name="contents-collapse">
+							<span>Содержимое</span>
+							<span class="docon docon-navigate-close" aria-hidden="true"></span>
+						</button>
+						<div id="sidebarContent">
+							<div class="filterHolder">
+							<form class="tocFilter" aria-label="Фильтровать оглавление"><input class="input is-size-7" placeholder="Фильтровать по названию" aria-label="Фильтр" data-bi-name="toc-filter" id="toc-filter" type="search" aria-controls="filterResults"><a href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#" title="Сбросить фильтр" class="clearInput"><span class="visually-hidden">Сбросить фильтр</span></a></form><div class="emptyFilterMessage">Нет результатов</div></div>
+							<nav class="toc" role="application" aria-label="Оглавление" id="filterResults"><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)" class="noSibs"><li role="group" aria-expanded="true" aria-label="взаимодействие с неуправляемым кодом " onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/" data-text="взаимодействие с неуправляемым кодом ">Взаимодействие с неуправляемым кодом</a><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li role="group" aria-expanded="false" aria-label="предоставление com-компонентов платформе .net framework " tabindex="0" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="noSubs"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/exposing-com-components" data-text="предоставление com-компонентов платформе .net framework ">Предоставление COM-компонентов платформе .NET&nbsp;Framework</a><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li role="treeitem"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/importing-a-type-library-as-an-assembly" data-text="импорт библиотеки типов в виде сборки ">Импорт библиотеки типов в виде сборки</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/how-to-add-references-to-type-libraries" data-text="практическое руководство. добавление ссылок на библиотеки типов ">Практическое руководство. Добавление ссылок на библиотеки типов</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/how-to-generate-interop-assemblies-from-type-libraries" data-text="практическое руководство. создание сборок взаимодействия их библиотек типов ">Практическое руководство. Создание сборок взаимодействия их библиотек типов</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/compiling-an-interop-project" data-text="компиляция проекта, использующего взаимодействие ">Компиляция проекта, использующего взаимодействие</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/deploying-an-interop-application" data-text="развертывание приложения взаимодействия ">Развертывание приложения взаимодействия</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/com-interop-sample-net-client-and-com-server" data-text="пример com-взаимодействия. клиент .net и com-сервер ">Пример COM-взаимодействия. Клиент .NET и COM-сервер</a></li></ul></li><li role="group" aria-expanded="false" aria-label="предоставление компонентов .net framework клиентам com " tabindex="0" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="noSubs"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/exposing-dotnet-components-to-com" data-text="предоставление компонентов .net framework клиентам com ">Предоставление компонентов .NET&nbsp;Framework клиентам&nbsp;COM</a><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li role="treeitem"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/qualifying-net-types-for-interoperation" data-text="oпределение типов .net для взаимодействия ">Oпределение типов .NET для взаимодействия</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/applying-interop-attributes" data-text="применение атрибутов взаимодействия ">Применение атрибутов взаимодействия</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/packaging-an-assembly-for-com" data-text="упаковка сборки для модели com ">Упаковка сборки для модели COM</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/registering-assemblies-with-com" data-text="регистрация сборок в com ">Регистрация сборок в COM</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/how-to-reference-net-types-from-com" data-text="практическое руководство. создание ссылки на типы .net из com ">Практическое руководство. Создание ссылки на типы .NET из COM</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/com-interop-sample-com-client-and-net-server" data-text="пример com-взаимодействия. com-клиент и сервер .net ">Пример COM-взаимодействия. COM-клиент и сервер .NET</a></li></ul></li><li role="group" aria-expanded="false" aria-label="использование неуправляемых функций dll " tabindex="0" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/consuming-unmanaged-dll-functions" data-text="использование неуправляемых функций dll ">Использование неуправляемых функций DLL</a><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li role="treeitem"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/identifying-functions-in-dlls" data-text="идентификация функций в библиотеках dll ">Идентификация функций в библиотеках DLL</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/creating-a-class-to-hold-dll-functions" data-text="создание класса, содержащего функции dll ">Создание класса, содержащего функции DLL</a></li><li role="group" aria-expanded="false" aria-label="создание прототипов в управляемом коде " tabindex="0" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="noSubs"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/creating-prototypes-in-managed-code" data-text="создание прототипов в управляемом коде ">Создание прототипов в управляемом коде</a><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li role="treeitem"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/specifying-an-entry-point" data-text="задание точки входа ">Задание точки входа</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/specifying-a-character-set" data-text="определение кодировки ">Определение кодировки</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/platform-invoke-examples" data-text="примеры вызовов неуправляемого кода ">Примеры вызовов неуправляемого кода</a></li></ul></li><li role="group" aria-expanded="false" aria-label="вызов функции dll " tabindex="0" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="noSubs"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/calling-a-dll-function" data-text="вызов функции dll ">Вызов функции DLL</a><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li role="treeitem"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/passing-structures" data-text="передача структур ">Передача структур</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/callback-functions" data-text="функции обратного вызова ">Функции обратного вызова</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/how-to-implement-callback-functions" data-text="практическое руководство. реализация функций обратного вызова ">Практическое руководство. Реализация функций обратного вызова</a></li></ul></li></ul></li><li role="group" aria-expanded="true" aria-label="маршалинг взаимодействия " tabindex="0" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/interop-marshaling" data-text="маршалинг взаимодействия ">Маршалинг взаимодействия</a><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li role="group" aria-expanded="false" aria-label="характеристики маршалинга по умолчанию " tabindex="0" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="noSubs"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/default-marshaling-behavior" data-text="характеристики маршалинга по умолчанию ">Характеристики маршалинга по умолчанию</a><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li role="treeitem"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/blittable-and-non-blittable-types" data-text="преобразуемые и непреобразуемые типы ">Преобразуемые и непреобразуемые типы</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/copying-and-pinning" data-text="копирование и закрепление ">Копирование и закрепление</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/default-marshaling-for-arrays" data-text="маршалинг по умолчанию для массивов ">Маршалинг по умолчанию для массивов</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/default-marshaling-for-objects" data-text="маршалинг по умолчанию для объектов ">Маршалинг по умолчанию для объектов</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/default-marshaling-for-strings" data-text="маршалинг по умолчанию для строк ">Маршалинг по умолчанию для строк</a></li></ul></li><li role="group" aria-expanded="true" aria-label="маршалинг данных при вызове неуправляемого кода " tabindex="0" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="noSubs"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-data-with-platform-invoke" data-text="маршалинг данных при вызове неуправляемого кода ">Маршалинг данных при вызове неуправляемого кода</a><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li role="treeitem"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-strings" data-text="mаршалинг строк ">Mаршалинг строк</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/msgbox-sample" data-text="пример msgbox ">Пример Msg<wbr>Box</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-classes-structures-and-unions" data-text="маршалинг классов, структур и объединений ">Маршалинг классов, структур и объединений</a></li><li role="treeitem" class="selectedHolder"><a tabindex="0" class="selected" aria-current="page" data-showme="true" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays" data-text="маршалинг различных типов массивов ">Маршалинг различных типов массивов</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-a-delegate-as-a-callback-method" data-text="маршалинг делегата как метода обратного вызова ">Маршалинг делегата как метода обратного вызова</a></li></ul></li><li role="group" aria-expanded="false" aria-label="маршалинг с помощью com- взаимодействия " tabindex="0" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="noSubs"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-data-with-com-interop" data-text="маршалинг с помощью com- взаимодействия ">Маршалинг с помощью COM- взаимодействия</a><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li role="treeitem"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/how-to-create-wrappers-manually" data-text="практическое руководство. создание оболочек вручную ">Практическое руководство. Создание оболочек вручную</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/how-to-migrate-managed-code-dcom-to-wcf" data-text="практическое руководство. миграция dcom с управляемым кодом в wcf ">Практическое руководство. Миграция DCOM с управляемым кодом в WCF</a></li></ul></li></ul></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/how-to-map-hresults-and-exceptions" data-text="практическое руководство. сопоставление значений hresult и исключений ">Практическое руководство. Сопоставление значений HRESULT и исключений</a></li><li role="group" aria-expanded="false" aria-label="oболочки com " tabindex="0" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="noSubs"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/com-wrappers" data-text="oболочки com ">Oболочки COM</a><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li role="treeitem"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/runtime-callable-wrapper" data-text="вызываемая оболочка времени выполнения ">Вызываемая оболочка времени выполнения</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/com-callable-wrapper" data-text="вызываемая оболочка com ">Вызываемая оболочка COM</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/how-to-create-com-wrappers" data-text="практическое руководство. создание оболочек com ">Практическое руководство. Создание оболочек COM</a></li></ul></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/type-equivalence-and-embedded-interop-types" data-text="эквивалентность типов и внедренные типы взаимодействия ">Эквивалентность типов и внедренные типы взаимодействия</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/how-to-generate-primary-interop-assemblies-using-tlbimp-exe" data-text="практическое руководство. создание основной сборки взаимодействия с помощью программы tlbimp.exe ">Практическое руководство. Создание основной сборки взаимодействия с помощью программы Tlbimp.<wbr>exe</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/how-to-register-primary-interop-assemblies" data-text="практическое руководство. регистрация основных сборок взаимодействия ">Практическое руководство. Регистрация основных сборок взаимодействия</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/registration-free-com-interop" data-text="com-взаимодействие без регистрации ">COM-взаимодействие без регистрации</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/configure-net-framework-based-com-components-for-reg" data-text="практическое руководство. настройка com-компонентов на основе платформы .net framework для активации без регистрации ">Практическое руководство. Настройка COM-компонентов на основе платформы .NET Framework для активации без регистрации</a></li></ul></li></ul></nav>
+							<div class="pdf-download-holder"></div>
+						</div>
+					</nav>
+				</div>
+
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+		</div>
+
+		<!--end of .mainContainer -->
+	</div>
+
+	<div id="openFeedbackContainer" class="openfeedback-container">
+		<form class="rating has-default-focus rating-helpful-active" action="javascript:" data-bi-name="rating">
+			<button class="rating-close has-inner-focus docon docon-navigate-close" type="button" aria-label="Закрыть" data-bi-name="rating-close"></button>
+			<button class="button is-primary rating-mobile-feedback" type="button" data-bi-name="rating-mobile-feedback">Обратная связь</button>
+			<div class="rating-helpful">
+				<label>Были ли сведения на этой странице полезными?</label>
+				<div class="buttons">
+					<button class="button is-primary" type="button" data-bi-name="rating-yes" data-bi-sat="1">Да</button>
+					<button class="button is-primary" type="button" data-bi-name="rating-no" data-bi-sat="0">Нет</button>
+				</div>
+			</div>
+			<div class="rating-verbatim">
+				<label for="rating-0">Что мы можем улучшить?</label>
+				<textarea class="rating-textarea" id="rating-0" placeholder="Поделитесь своими идеями. Вы можете оставить отзыв на любом языке."></textarea>
+				<button class="button is-primary" type="submit" data-bi-name="rating-verbatim" disabled="">Отправить</button>
+			</div>
+			<div class="rating-thanks1">
+				<p>Спасибо за отзыв!</p>
+				<p>Хотите оставить комментарий или внести предложение? <a href="https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays#" data-bi-name="rating-verbatim-link">Оставьте свой отзыв здесь</a>.</p>
+			</div>
+			<div class="rating-thanks2">
+				<span>Спасибо за отзыв!</span>
+			</div>
+		</form></div>
+
+	<div class="footerContainer has-default-focus is-hidden-interactive ">
+<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
+
+    <a data-mscc-ic="false" class="locale-selector-link" href="https://docs.microsoft.com/ru-ru/locale?target=https://docs.microsoft.com/ru-ru/dotnet/framework/interop/marshaling-different-types-of-arrays" data-bi-name="select-locale"><span class="icon docon docon-world is-size-4 has-margin-right-small"></span><span class="local-selector-link-text">Русский</span></a>
+
+    <ul class="links" data-bi-name="footerlinks">
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/previous-versions/" data-bi-name="archivelink">Документация по предыдущей версии</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/teamblog" data-bi-name="bloglink">Блог</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/contribute" data-bi-name="contributorGuide">Участие в доработке</a></li>
+			<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Конфиденциальность и файлы cookie</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/ru-ru/legal/termsofuse" data-bi-name="termsofuse">Условия использования</a></li>
+		<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Отзывы о сайте</a></li>
+		<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Товарные знаки</a></li>
+    </ul>
+</footer>
+	</div>
+
+	<div class="action-panel has-default-focus"></div>
+<noscript>&lt;img src="https://docs.microsoft.com/akam/10/pixel_64c5dda1?a=dD04ZGNhZWFhM2UwODNlYTNhZDdjOGJhMTk2OWIzYzcyNTYyMDIzYTYwJmpzPW9mZg==" style="visibility: hidden; position: absolute; left: -999px; top: -999px;" /&gt;</noscript>
+
+</body></html>
