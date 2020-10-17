@@ -45,10 +45,22 @@ namespace im
 
 		wcscpy_s(exportImageInfo->Path, imagePath);
 		exportImageInfo->JpegPeak = ImageMetricsHelper::CalcDoubleJpegCompressionPeaks(img);
-		exportImageInfo->JpegQuality = 0;
-		exportImageInfo->Sharpness = 0;
-		exportImageInfo->Height = 0;
-		exportImageInfo->Width = 0;
+		Mat greyMat;
+		cv::cvtColor(img, greyMat, CV_BGR2GRAY);
+		exportImageInfo->JpegQuality = ImageMetricsHelper::CalcJpegQuality(greyMat);;
+		exportImageInfo->Sharpness = ImageMetricsHelper::CalcSharpness(greyMat);
+		exportImageInfo->Height = img.rows;
+		exportImageInfo->Width = img.cols;
+
+		HANDLE fileHandle;
+		wstring targetPath = PathHelper::GetPathForSearchInAPI(path);
+		fileHandle = CreateFile(targetPath.c_str(), GENERIC_READ, FILE_SHARE_READ, NULL,
+					OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+		if ( fileHandle != NULL && fileHandle != INVALID_HANDLE_VALUE )
+		{
+			exportImageInfo->FileSize = GetFileSize(fileHandle, NULL);
+			CloseHandle(fileHandle);
+		}
 
 		return Error::OK;
 	}
@@ -103,7 +115,25 @@ namespace im
 					wstring path = StringHelper::ToWstring(pPointArray[i].Path);
 					if (!OpenCVHelper::ReadImage(img, path, negotiator))
 						Error::NOT_READ_IMAGE;
+
 					pPointArray[i].JpegPeak = ImageMetricsHelper::CalcDoubleJpegCompressionPeaks(img);
+
+					Mat greyMat;
+					cv::cvtColor(img, greyMat, CV_BGR2GRAY);
+					pPointArray[i].JpegQuality = ImageMetricsHelper::CalcJpegQuality(greyMat);;
+					pPointArray[i].Sharpness = ImageMetricsHelper::CalcSharpness(greyMat);
+					pPointArray[i].Height = img.rows;
+					pPointArray[i].Width = img.cols;
+
+					HANDLE fileHandle;
+					wstring targetPath = PathHelper::GetPathForSearchInAPI(path);
+					fileHandle = CreateFile(targetPath.c_str(), GENERIC_READ, FILE_SHARE_READ, NULL,
+								OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+					if ( fileHandle != NULL && fileHandle != INVALID_HANDLE_VALUE )
+					{
+						pPointArray[i].FileSize = GetFileSize(fileHandle, NULL);
+						CloseHandle(fileHandle);
+					}
 
 					//guard.lock();
 					//negotiator.progressCallback(progress, size, (*file).c_str());
